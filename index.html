@@ -89,6 +89,32 @@
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
         }
 
+        /* Games Page Styling */
+        .games-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Ensures the games wrap on smaller screens */
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .game {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            color: white;
+            transition: all 0.3s ease; /* Smooth hover transition */
+        }
+
+        .game:hover {
+            padding: 12px;
+            border-radius: 12px;
+            width: 225px;
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
         /* Records Page Styling */
         .records-container {
             display: flex;
@@ -199,9 +225,10 @@
     </div>
 
     <script>
-        // Function to change the title of the tab when the heading is clicked
+        // Function to change the title of the tab and simulate link cloaking
         function changeTabTitle() {
-            document.title = "Ary Sus Gaming - Homepage"; // Updated title
+            document.title = "about blank"; // Change the title of the tab
+            history.pushState(null, null, "about:blank"); // Simulate the URL change
         }
 
         // Function to show Hall of Fame page
