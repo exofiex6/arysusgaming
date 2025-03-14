@@ -122,15 +122,6 @@
             background-color: #666666;
         }
 
-        /* Games Page Styling */
-        .games-container {
-            display: flex;
-            justify-content: space-between; /* Align games horizontally */
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap;
-        }
-
         .game {
             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
             padding: 10px;
@@ -233,25 +224,15 @@
         function prevPage() {
             if (currentPage > 1) {
                 currentPage--;
-                fadeOutIn(() => displayPage(currentPage));
+                displayPage(currentPage);
             }
         }
 
         function nextPage() {
             if (currentPage < totalPages) {
                 currentPage++;
-                fadeOutIn(() => displayPage(currentPage));
+                displayPage(currentPage);
             }
-        }
-
-        function fadeOutIn(callback) {
-            const page = document.getElementById("halloffame");
-            page.style.opacity = "0";  // Fade out
-
-            setTimeout(() => {
-                callback();  // Execute the page change
-                page.style.opacity = "1";  // Fade in
-            }, 500);  // Wait for the fade out transition to complete before changing content
         }
 
         // Initialize the first page
@@ -284,3 +265,4 @@
 
 </body>
 </html>
+
