@@ -140,6 +140,28 @@
         .record p {
             font-size: 1.2rem;
         }
+
+        /* Pagination Controls */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #444444;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #666666;
+        }
     </style>
 </head>
 <body>
@@ -147,19 +169,6 @@
     <!-- Homepage Content -->
     <div class="homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
-            		<a href="chat.html?prev=index.html" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #0044cc;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-">💬 Chat Room</a>
             <h1 onclick="changeTabTitle()">Ary Sus Gaming</h1> <!-- Add the onclick event here -->
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
@@ -216,64 +225,103 @@
     <div id="records" class="records" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Records</h1>
-            <div class="records-container">
-                <!-- Record 1 -->
-                <div class="record">
-                    <h3>Player 1</h3>
-                    <p>Highest Score: 1500</p>
-                </div>
-                <!-- Record 2 -->
-                <div class="record">
-                    <h3>Player 2</h3>
-                    <p>Highest Score: 1200</p>
-                </div>
-                <!-- Record 3 -->
-                <div class="record">
-                    <h3>Player 3</h3>
-                    <p>Highest Score: 1000</p>
-                </div>
+            <div class="records-container" id="records-container">
+                <!-- Dynamically Filled Records -->
+            </div>
+            <div class="pagination" id="pagination-controls">
+                <!-- Pagination buttons will be added here -->
             </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
     <script>
-        // Function to change the title of the tab and simulate link cloaking
-        function changeTabTitle() {
-            document.title = "about blank"; // Change the title of the tab
-            history.pushState(null, null, "about:blank"); // Simulate the URL change
+        // Sample data for records
+        const records = [
+            { name: 'Player 1', score: 1500 },
+            { name: 'Player 2', score: 1200 },
+            { name: 'Player 3', score: 1000 },
+            { name: 'Player 4', score: 800 },
+            { name: 'Player 5', score: 650 },
+            { name: 'Player 6', score: 550 },
+            { name: 'Player 7', score: 400 },
+            { name: 'Player 8', score: 300 },
+            { name: 'Player 9', score: 250 },
+            { name: 'Player 10', score: 150 },
+            { name: 'Player 11', score: 100 },
+            { name: 'Player 12', score: 50 }
+        ];
+
+        // Pagination settings
+        const recordsPerPage = 5;
+        let currentPage = 1;
+
+        // Function to display records for the current page
+        function displayRecords() {
+            const startIndex = (currentPage - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            const pageRecords = records.slice(startIndex, endIndex);
+
+            // Display the records
+            const container = document.getElementById('records-container');
+            container.innerHTML = ''; // Clear previous records
+
+            pageRecords.forEach(record => {
+                const recordElement = document.createElement('div');
+                recordElement.className = 'record';
+                recordElement.innerHTML = `<h3>${record.name}</h3><p>Highest Score: ${record.score}</p>`;
+                container.appendChild(recordElement);
+            });
+
+            // Display pagination controls
+            displayPagination();
         }
 
-        // Function to show Hall of Fame page
-        function showHallOfFame() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.halloffame').classList.add('active');
+        // Function to display pagination buttons
+        function displayPagination() {
+            const paginationContainer = document.getElementById('pagination-controls');
+            paginationContainer.innerHTML = ''; // Clear previous pagination buttons
+
+            const totalPages = Math.ceil(records.length / recordsPerPage);
+
+            // Previous Button
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = 'Previous';
+            prevButton.disabled = currentPage === 1;
+            prevButton.onclick = () => changePage(currentPage - 1);
+            paginationContainer.appendChild(prevButton);
+
+            // Next Button
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = 'Next';
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.onclick = () => changePage(currentPage + 1);
+            paginationContainer.appendChild(nextButton);
         }
 
-        // Function to show Games page
-        function showGamesPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.add('active');
+        // Function to change the page
+        function changePage(page) {
+            if (page >= 1 && page <= Math.ceil(records.length / recordsPerPage)) {
+                currentPage = page;
+                displayRecords();
+            }
         }
 
         // Function to show Records page
         function showRecordsPage() {
             document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.records').classList.add('active');
-        }
-
-        // Function to go back to homepage from Hall of Fame
-        function goBack() {
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.homepage').classList.add('active');
-        }
-
-        // Function to go back to homepage from Games page
-        function goBackToHome() {
             document.querySelector('.games').classList.remove('active');
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.records').classList.add('active');
+            displayRecords();
+        }
+
+        // Function to go back to homepage
+        function goBackToHome() {
             document.querySelector('.records').classList.remove('active');
             document.querySelector('.homepage').classList.add('active');
         }
+
     </script>
 
 </body>
