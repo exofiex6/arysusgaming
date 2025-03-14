@@ -251,3 +251,43 @@
         }
 
         // Function to show Records page
+        function showRecordsPage() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.games').classList.remove('active');
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.records').classList.add('active');
+            displayRecords();
+        }
+
+        // Function to show Hall of Fame page
+        function showHallOfFame() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.games').classList.remove('active');
+            document.querySelector('.records').classList.remove('active');
+            document.querySelector('.halloffame').classList.add('active');
+        }
+
+        // Function to show Games page
+        function showGamesPage() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.records').classList.remove('active');
+            document.querySelector('.games').classList.add('active');
+        }
+
+        // Function to go back to homepage from other pages
+        function goBackToHome() {
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.games').classList.remove('active');
+            document.querySelector('.records').classList.remove('active');
+            document.querySelector('.homepage').classList.add('active');
+        }
+
+        // Function to change the title of the tab when the heading is clicked
+        function changeTabTitle() {
+            document.title = "about blank"; // Change the title of the tab
+        }
+    </script>
+
+</body>
+</html>
