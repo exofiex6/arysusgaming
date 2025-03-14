@@ -100,26 +100,13 @@
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
         }
 
-        /* Pagination Styling */
-        .pagination {
+        /* Games Page Styling */
+        .games-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
-        }
-
-        .pagination button {
-            background-color: #444444;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .pagination button:hover {
-            background-color: #666666;
+            padding: 20px;
         }
 
         .game {
@@ -155,13 +142,13 @@
         <div class="container">
             <h1>Hall of Fame</h1>
             <p>Creators of this website:</p>
-            <ul id="halloffame-list">
-                <!-- Records will be dynamically inserted here -->
+            <ul>
+                <li>Exofiend</li>
+                <li>Ary</li>
+                <li>Mally</li>
             </ul>
-            <div class="pagination">
-                <button id="prevButton" onclick="prevPage()">← Previous</button>
-                <button id="nextButton" onclick="nextPage()">Next →</button>
-            </div>
+            <p>Working on it...</p>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -195,49 +182,6 @@
     </div>
 
     <script>
-        const hallOfFameData = [
-            "Exofiend", "Ary", "Mally", "Creator 4", "Creator 5", "Creator 6", "Creator 7", "Creator 8", "Creator 9",
-            "Creator 10", "Creator 11", "Creator 12", "Creator 13", "Creator 14", "Creator 15"
-        ];
-
-        let currentPage = 1;
-        const recordsPerPage = 3;
-        const totalPages = Math.ceil(hallOfFameData.length / recordsPerPage);
-
-        function displayPage(page) {
-            const start = (page - 1) * recordsPerPage;
-            const end = start + recordsPerPage;
-            const recordsToShow = hallOfFameData.slice(start, end);
-            
-            const list = document.getElementById("halloffame-list");
-            list.innerHTML = ""; // Clear existing list
-            recordsToShow.forEach(record => {
-                const li = document.createElement("li");
-                li.textContent = record;
-                list.appendChild(li);
-            });
-
-            document.getElementById("prevButton").disabled = page === 1;
-            document.getElementById("nextButton").disabled = page === totalPages;
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--;
-                displayPage(currentPage);
-            }
-        }
-
-        function nextPage() {
-            if (currentPage < totalPages) {
-                currentPage++;
-                displayPage(currentPage);
-            }
-        }
-
-        // Initialize the first page
-        displayPage(currentPage);
-
         // Function to show Hall of Fame page
         function showHallOfFame() {
             document.querySelector('.homepage').classList.remove('active');
