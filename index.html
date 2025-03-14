@@ -77,42 +77,6 @@
             background-color: #666666; /* Darker hover effect */
         }
 
-        /* Hall of Fame List Styling */
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        ul li {
-            font-size: 1.5rem;
-            padding: 5px 0;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Games Page Styling */
-        .games-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .game {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
-            padding: 10px;
-            border-radius: 10px;
-            text-align: center;
-            width: 200px;
-            color: white;
-        }
-
-        .game:hover {
-            padding: 12px;
-            border-radius: 12px;
-            width: 225px;
-        }
-
         /* Records Page Styling */
         .records-container {
             display: flex;
@@ -135,6 +99,25 @@
             padding: 12px;
             border-radius: 12px;
             width: 225px;
+        }
+
+        /* Pagination Controls */
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .pagination button {
+            background-color: #444444;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .pagination button:hover {
+            background-color: #666666;
         }
 
     </style>
@@ -202,80 +185,69 @@
         <div class="container">
             <h1>Records</h1>
             <p>Check out some amazing records below!</p>
-            <div class="records-container">
-                <!-- Record 1 -->
-                <div class="record">
-                    <h2>Record 1</h2>
-                    <p>Player 1</p>
-                    <p>Score: 9999</p>
-                </div>
-                <!-- Record 2 -->
-                <div class="record">
-                    <h2>Record 2</h2>
-                    <p>Player 2</p>
-                    <p>Score: 8888</p>
-                </div>
-                <!-- Record 3 -->
-                <div class="record">
-                    <h2>Record 3</h2>
-                    <p>Player 3</p>
-                    <p>Score: 7777</p>
-                </div>
-                <!-- Record 4 -->
-                <div class="record">
-                    <h2>Record 4</h2>
-                    <p>Player 4</p>
-                    <p>Score: 6666</p>
-                </div>
-                <!-- Record 5 -->
-                <div class="record">
-                    <h2>Record 5</h2>
-                    <p>Player 5</p>
-                    <p>Score: 5555</p>
-                </div>
+            <div class="records-container" id="records-container">
+                <!-- Records will be populated here dynamically -->
+            </div>
+            <!-- Pagination -->
+            <div class="pagination">
+                <button id="prevBtn" onclick="changePage(-1)">Previous</button>
+                <button id="nextBtn" onclick="changePage(1)">Next</button>
             </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
     <script>
-        // Function to change the title of the tab when the heading is clicked
-        function changeTabTitle() {
-            document.title = "about blank"; // Change the title of the tab
+        // Define records data
+        const records = [
+            { name: "Player 1", score: 9999 },
+            { name: "Player 2", score: 8888 },
+            { name: "Player 3", score: 7777 },
+            { name: "Player 4", score: 6666 },
+            { name: "Player 5", score: 5555 },
+            { name: "Player 6", score: 4444 },
+            { name: "Player 7", score: 3333 },
+            { name: "Player 8", score: 2222 },
+            { name: "Player 9", score: 1111 },
+            { name: "Player 10", score: 1000 },
+            { name: "Player 11", score: 900 },
+            { name: "Player 12", score: 800 },
+            { name: "Player 13", score: 700 },
+            { name: "Player 14", score: 600 },
+            { name: "Player 15", score: 500 }
+        ];
+
+        const recordsPerPage = 5;
+        let currentPage = 1;
+
+        // Function to display records based on the current page
+        function displayRecords() {
+            const startIndex = (currentPage - 1) * recordsPerPage;
+            const endIndex = startIndex + recordsPerPage;
+            const currentRecords = records.slice(startIndex, endIndex);
+
+            const recordsContainer = document.getElementById("records-container");
+            recordsContainer.innerHTML = ''; // Clear previous records
+
+            currentRecords.forEach(record => {
+                const recordElement = document.createElement("div");
+                recordElement.classList.add("record");
+                recordElement.innerHTML = `
+                    <h2>${record.name}</h2>
+                    <p>Score: ${record.score}</p>
+                `;
+                recordsContainer.appendChild(recordElement);
+            });
+
+            // Show/hide previous and next buttons
+            document.getElementById("prevBtn").style.display = currentPage === 1 ? "none" : "inline-block";
+            document.getElementById("nextBtn").style.display = currentPage * recordsPerPage < records.length ? "inline-block" : "none";
         }
 
-        // Function to show Hall of Fame page
-        function showHallOfFame() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
-            document.querySelector('.halloffame').classList.add('active');
-        }
-
-        // Function to show Games page
-        function showGamesPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
-            document.querySelector('.games').classList.add('active');
+        // Function to change pages
+        function changePage(direction) {
+            currentPage += direction;
+            displayRecords();
         }
 
         // Function to show Records page
-        function showRecordsPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.add('active');
-        }
-
-        // Function to go back to homepage from any page (Hall of Fame, Games, or Records)
-        function goBackToHome() {
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
-            document.querySelector('.homepage').classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
