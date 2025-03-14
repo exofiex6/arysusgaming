@@ -92,8 +92,8 @@
         /* Games Page Styling */
         .games-container {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap; /* Ensures the games wrap on smaller screens */
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
             padding: 20px;
         }
@@ -105,67 +105,38 @@
             text-align: center;
             width: 200px;
             color: white;
-            transition: all 0.3s ease; /* Smooth hover transition */
         }
 
         .game:hover {
             padding: 12px;
             border-radius: 12px;
             width: 225px;
-            transform: scale(1.05); /* Slight zoom effect on hover */
         }
 
         /* Records Page Styling */
         .records-container {
             display: flex;
-            justify-content: flex-start; /* Align items to the start */
-            align-items: center; /* Align items vertically */
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 20px;
-            overflow-x: auto; /* Allows horizontal scrolling */
             padding: 20px;
-            flex-wrap: nowrap; /* Prevent wrapping, ensure horizontal layout */
         }
 
         .record {
             background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for records */
-            padding: 20px;
+            padding: 10px;
             border-radius: 10px;
-            color: white;
             text-align: center;
             width: 200px;
-            min-height: 150px;
-        }
-
-        .record h3 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
-
-        .record p {
-            font-size: 1.2rem;
-        }
-
-        /* Pagination Controls */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .pagination button {
-            background-color: #444444;
-            padding: 10px 20px;
-            font-size: 1.2rem;
             color: white;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
         }
 
-        .pagination button:hover {
-            background-color: #666666;
+        .record:hover {
+            padding: 12px;
+            border-radius: 12px;
+            width: 225px;
         }
+
     </style>
 </head>
 <body>
@@ -177,7 +148,7 @@
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
-            <a href="#" class="button" onclick="showRecordsPage()">Records</a> <!-- New Button for Records -->
+            <a href="#" class="button" onclick="showRecordsPage()">Records</a> <!-- Added Records button -->
         </div>
     </div>
 
@@ -192,7 +163,8 @@
                 <li>Mally</li>
             </ul>
             <p>Working on it...</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            <!-- Back to Home Button -->
+            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
@@ -229,103 +201,47 @@
     <div id="records" class="records" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Records</h1>
-            <div class="records-container" id="records-container">
-                <!-- Dynamically Filled Records -->
-            </div>
-            <div class="pagination" id="pagination-controls">
-                <!-- Pagination buttons will be added here -->
+            <p>Check out some amazing records below!</p>
+            <div class="records-container">
+                <!-- Record 1 -->
+                <div class="record">
+                    <h2>Record 1</h2>
+                    <p>Player 1</p>
+                    <p>Score: 9999</p>
+                </div>
+                <!-- Record 2 -->
+                <div class="record">
+                    <h2>Record 2</h2>
+                    <p>Player 2</p>
+                    <p>Score: 8888</p>
+                </div>
+                <!-- Record 3 -->
+                <div class="record">
+                    <h2>Record 3</h2>
+                    <p>Player 3</p>
+                    <p>Score: 7777</p>
+                </div>
+                <!-- Record 4 -->
+                <div class="record">
+                    <h2>Record 4</h2>
+                    <p>Player 4</p>
+                    <p>Score: 6666</p>
+                </div>
+                <!-- Record 5 -->
+                <div class="record">
+                    <h2>Record 5</h2>
+                    <p>Player 5</p>
+                    <p>Score: 5555</p>
+                </div>
             </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
     <script>
-        // Sample data for records
-        const records = [
-            { name: 'Player 1', score: 1500 },
-            { name: 'Player 2', score: 1200 },
-            { name: 'Player 3', score: 1000 },
-            { name: 'Player 4', score: 800 },
-            { name: 'Player 5', score: 650 },
-            { name: 'Player 6', score: 550 },
-            { name: 'Player 7', score: 400 },
-            { name: 'Player 8', score: 300 },
-            { name: 'Player 9', score: 250 },
-            { name: 'Player 10', score: 150 },
-            { name: 'Player 11', score: 100 },
-            { name: 'Player 12', score: 50 }
-        ];
-
-        // Pagination settings
-        const recordsPerPage = 5;
-        let currentPage = 1;
-
-        // Function to display records for the current page
-        function displayRecords() {
-            const startIndex = (currentPage - 1) * recordsPerPage;
-            const endIndex = startIndex + recordsPerPage;
-            const pageRecords = records.slice(startIndex, endIndex);
-
-            // Display the records
-            const container = document.getElementById('records-container');
-            container.innerHTML = ''; // Clear previous records
-
-            pageRecords.forEach(record => {
-                const recordElement = document.createElement('div');
-                recordElement.className = 'record';
-                recordElement.innerHTML = `<h3>${record.name}</h3><p>Highest Score: ${record.score}</p>`;
-                container.appendChild(recordElement);
-            });
-
-            // Display pagination controls
-            displayPagination();
-        }
-
-        // Function to display pagination buttons
-        function displayPagination() {
-            const paginationContainer = document.getElementById('pagination-controls');
-            paginationContainer.innerHTML = ''; // Clear previous pagination buttons
-
-            const totalPages = Math.ceil(records.length / recordsPerPage);
-
-            // Previous Button
-            const prevButton = document.createElement('button');
-            prevButton.innerHTML = 'Previous';
-            prevButton.disabled = currentPage === 1;
-            prevButton.onclick = () => changePage(currentPage - 1);
-            paginationContainer.appendChild(prevButton);
-
-            // Next Button
-            const nextButton = document.createElement('button');
-            nextButton.innerHTML = 'Next';
-            nextButton.disabled = currentPage === totalPages;
-            nextButton.onclick = () => changePage(currentPage + 1);
-            paginationContainer.appendChild(nextButton);
-        }
-
-        // Function to change the page
-        function changePage(page) {
-            if (page >= 1 && page <= Math.ceil(records.length / recordsPerPage)) {
-                currentPage = page;
-                displayRecords();
-            }
-        }
-
-        // Function to show Records page
-        function showRecordsPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.add('active');
-            displayRecords();
-        }
-
-        // Function to show Games page
-        function showGamesPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
-            document.querySelector('.games').classList.add('active');
+        // Function to change the title of the tab when the heading is clicked
+        function changeTabTitle() {
+            document.title = "about blank"; // Change the title of the tab
         }
 
         // Function to show Hall of Fame page
@@ -336,16 +252,29 @@
             document.querySelector('.halloffame').classList.add('active');
         }
 
-        // Function to go back to homepage from Hall of Fame, Games, or Records
+        // Function to show Games page
+        function showGamesPage() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.records').classList.remove('active');
+            document.querySelector('.games').classList.add('active');
+        }
+
+        // Function to show Records page
+        function showRecordsPage() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.games').classList.remove('active');
+            document.querySelector('.halloffame').classList.remove('active');
+            document.querySelector('.records').classList.add('active');
+        }
+
+        // Function to go back to homepage from any page (Hall of Fame, Games, or Records)
         function goBackToHome() {
             document.querySelector('.halloffame').classList.remove('active');
             document.querySelector('.games').classList.remove('active');
             document.querySelector('.records').classList.remove('active');
             document.querySelector('.homepage').classList.add('active');
         }
-
-        // Initial function call to display homepage when loaded
-        displayRecords();
     </script>
 
 </body>
