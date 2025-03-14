@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,7 +25,7 @@
         }
 
         /* Background Image Settings */
-        .homepage, .halloffame, .games {
+        .homepage, .halloffame, .games, .records {
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -90,28 +89,30 @@
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
         }
 
-        /* Games Page Styling */
-        .games-container {
+        /* Records Page Styling */
+        .records-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
+            flex-direction: column;
+            align-items: center;
             padding: 20px;
         }
 
-        .game {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
+        .record {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for records */
             padding: 10px;
             border-radius: 10px;
-            text-align: center;
-            width: 200px;
+            margin: 10px 0;
+            width: 80%;
             color: white;
         }
 
-        .game:hover {
-            padding: 12px;
-            border-radius: 12px;
-            width: 225px;
+        .record h3 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .record p {
+            font-size: 1.2rem;
         }
     </style>
 </head>
@@ -124,6 +125,7 @@
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
+            <a href="#" class="button" onclick="showRecordsPage()">Records</a> <!-- New Button for Records -->
         </div>
     </div>
 
@@ -171,10 +173,35 @@
         </div>
     </div>
 
+    <!-- Records Page (hidden initially) -->
+    <div id="records" class="records" style="background-image: url('your-background-image.jpg');">
+        <div class="container">
+            <h1>Records</h1>
+            <div class="records-container">
+                <!-- Record 1 -->
+                <div class="record">
+                    <h3>Player 1</h3>
+                    <p>Highest Score: 1500</p>
+                </div>
+                <!-- Record 2 -->
+                <div class="record">
+                    <h3>Player 2</h3>
+                    <p>Highest Score: 1200</p>
+                </div>
+                <!-- Record 3 -->
+                <div class="record">
+                    <h3>Player 3</h3>
+                    <p>Highest Score: 1000</p>
+                </div>
+            </div>
+            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+        </div>
+    </div>
+
     <script>
         // Function to change the title of the tab when the heading is clicked
         function changeTabTitle() {
-            document.title = "about blank"; // Change the title of the tab
+            document.title = "Ary Sus Gaming - Homepage"; // Updated title
         }
 
         // Function to show Hall of Fame page
@@ -189,6 +216,12 @@
             document.querySelector('.games').classList.add('active');
         }
 
+        // Function to show Records page
+        function showRecordsPage() {
+            document.querySelector('.homepage').classList.remove('active');
+            document.querySelector('.records').classList.add('active');
+        }
+
         // Function to go back to homepage from Hall of Fame
         function goBack() {
             document.querySelector('.halloffame').classList.remove('active');
@@ -198,6 +231,7 @@
         // Function to go back to homepage from Games page
         function goBackToHome() {
             document.querySelector('.games').classList.remove('active');
+            document.querySelector('.records').classList.remove('active');
             document.querySelector('.homepage').classList.add('active');
         }
     </script>
