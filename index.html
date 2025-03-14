@@ -8,6 +8,8 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #1a1a1a; /* Dark background for the body */
+            color: white; /* Light text for contrast */
         }
 
         /* Homepage & Hall of Fame Container */
@@ -30,6 +32,7 @@
             display: none; /* Hide initially */
             opacity: 0;
             transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better contrast */
         }
 
         /* Show active page */
@@ -44,6 +47,7 @@
             margin: 0;
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            color: #fff; /* Light heading color */
         }
 
         /* Paragraph Styling */
@@ -51,15 +55,16 @@
             font-size: 1.5rem;
             margin-bottom: 20px;
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+            color: #ddd; /* Lighter paragraph color */
         }
 
         /* Button Styling */
         .button {
-            background-color: #ffcc00;
+            background-color: #444444; /* Dark button background */
             padding: 15px 30px;
             font-size: 1.2rem;
             text-decoration: none;
-            color: black;
+            color: white; /* Light text color */
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
@@ -67,7 +72,20 @@
         }
 
         .button:hover {
-            background-color: #ff9900;
+            background-color: #666666; /* Darker hover effect */
+        }
+
+        /* Cloaked Link Styling */
+        a {
+            text-decoration: none; /* Remove the underline */
+            color: #ddd; /* Light gray color for links */
+            font-weight: bold; /* Make the links stand out slightly */
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffcc00; /* Subtle yellow hover effect for visibility */
+            transform: scale(1.05); /* Slight zoom effect on hover */
         }
 
         /* Hall of Fame List Styling */
@@ -92,11 +110,12 @@
         }
 
         .game {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
             padding: 10px;
             border-radius: 10px;
             text-align: center;
             width: 200px;
+            color: white;
         }
 
         .game iframe {
@@ -165,28 +184,5 @@
     <script>
         // Function to show Hall of Fame page
         function showHallOfFame() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.halloffame').classList.add('active');
-        }
+            document.querySelector('.h
 
-        // Function to show Games page
-        function showGamesPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.add('active');
-        }
-
-        // Function to go back to homepage from Hall of Fame
-        function goBack() {
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.homepage').classList.add('active');
-        }
-
-        // Function to go back to homepage from Games page
-        function goBackToHome() {
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.homepage').classList.add('active');
-        }
-    </script>
-
-</body>
-</html>
