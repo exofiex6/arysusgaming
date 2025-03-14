@@ -10,7 +10,6 @@
             font-family: Arial, sans-serif;
             background-color: #1a1a1a; /* Dark background for the body */
             color: white; /* Light text for contrast */
-            background-color: #121212;
         }
 
         /* Homepage & Hall of Fame Container */
@@ -25,7 +24,7 @@
         }
 
         /* Background Image Settings */
-        .homepage, .halloffame, .games, .records {
+        .homepage, .halloffame, .games {
             background-size: cover;
             background-position: center;
             width: 100%;
@@ -49,7 +48,6 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff; /* Light heading color */
-            cursor: pointer; /* Add cursor pointer to indicate it's clickable */
         }
 
         /* Paragraph Styling */
@@ -77,17 +75,55 @@
             background-color: #666666; /* Darker hover effect */
         }
 
-        /* Records Page Styling */
-        .records-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
+        /* Cloaked Link Styling */
+        a {
+            text-decoration: none; /* Remove the underline */
+            color: #ddd; /* Light gray color for links */
+            font-weight: bold; /* Make the links stand out slightly */
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .record {
-            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for records */
+        a:hover {
+            color: #ffcc00; /* Subtle yellow hover effect for visibility */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        /* Hall of Fame List Styling */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            font-size: 1.5rem;
+            padding: 5px 0;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Pagination Styling */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #444444;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #666666;
+        }
+
+        .game {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
             padding: 10px;
             border-radius: 10px;
             text-align: center;
@@ -95,31 +131,11 @@
             color: white;
         }
 
-        .record:hover {
-            padding: 12px;
-            border-radius: 12px;
-            width: 225px;
-        }
-
-        /* Pagination Controls */
-        .pagination {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .pagination button {
-            background-color: #444444;
-            color: white;
-            padding: 10px 20px;
-            margin: 0 5px;
+        .game iframe {
+            width: 100%;
+            height: 150px;
             border-radius: 10px;
-            cursor: pointer;
         }
-
-        .pagination button:hover {
-            background-color: #666666;
-        }
-
     </style>
 </head>
 <body>
@@ -127,11 +143,10 @@
     <!-- Homepage Content -->
     <div class="homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
-            <h1 onclick="changeTabTitle()">Ary Sus Gaming</h1> <!-- Add the onclick event here -->
+            <h1>Ary Sus Gaming</h1>
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
-            <a href="#" class="button" onclick="showRecordsPage()">Records</a> <!-- Added Records button -->
         </div>
     </div>
 
@@ -140,14 +155,13 @@
         <div class="container">
             <h1>Hall of Fame</h1>
             <p>Creators of this website:</p>
-            <ul>
-                <li>Exofiend</li>
-                <li>Ary</li>
-                <li>Mally</li>
+            <ul id="halloffame-list">
+                <!-- Records will be dynamically inserted here -->
             </ul>
-            <p>Working on it...</p>
-            <!-- Back to Home Button -->
-            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+            <div class="pagination">
+                <button id="prevButton" onclick="prevPage()">← Previous</button>
+                <button id="nextButton" onclick="nextPage()">Next →</button>
+            </div>
         </div>
     </div>
 
@@ -159,20 +173,20 @@
             <div class="games-container">
                 <!-- Game 1 -->
                 <div class="game">
-                    <h2>MSG</h2>
-                    <a href="https://msg1.pages.dev"><img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Mally's Sussy Gaming" title="Game 1" width="150px" height="150px"></a>
-                    <p>Mally's Sussy Gaming</p>
+                    <h2>Game 1</h2>
+                    <iframe src="https://www.example.com" title="Game 1"></iframe>
+                    <p>Game description or details here.</p>
                 </div>
                 <!-- Game 2 -->
                 <div class="game">
-                    <h2>GAME ZONE</h2>
-                    <a href="https://gameszone.pages.dev" title="Game Zone"><img src="https://gameszone.pages.dev/IMGS/Logo.png" alt="Game Zone Logo" width="150px" height="150px"></a>
-                    <p>THIS IS GAME ZONE.</p>
+                    <h2>Game 2</h2>
+                    <iframe src="https://www.example.com" title="Game 2"></iframe>
+                    <p>Game description or details here.</p>
                 </div>
                 <!-- Game 3 -->
                 <div class="game">
                     <h2>Game 3</h2>
-                    <a href="https://www.example.com" title="Game 3"><img src="https://www.example.com/image.jpg" alt="Game 3" width="150px" height="150px"></a>
+                    <iframe src="https://www.example.com" title="Game 3"></iframe>
                     <p>Game description or details here.</p>
                 </div>
             </div>
@@ -180,112 +194,82 @@
         </div>
     </div>
 
-    <!-- Records Page (hidden initially) -->
-    <div id="records" class="records" style="background-image: url('your-background-image.jpg');">
-        <div class="container">
-            <h1>Records</h1>
-            <p>Check out some amazing records below!</p>
-            <div class="records-container" id="records-container">
-                <!-- Records will be populated here dynamically -->
-            </div>
-            <!-- Pagination -->
-            <div class="pagination">
-                <button id="prevBtn" onclick="changePage(-1)">Previous</button>
-                <button id="nextBtn" onclick="changePage(1)">Next</button>
-            </div>
-            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
-        </div>
-    </div>
-
     <script>
-        // Define records data
-        const records = [
-            { name: "Player 1", score: 9999 },
-            { name: "Player 2", score: 8888 },
-            { name: "Player 3", score: 7777 },
-            { name: "Player 4", score: 6666 },
-            { name: "Player 5", score: 5555 },
-            { name: "Player 6", score: 4444 },
-            { name: "Player 7", score: 3333 },
-            { name: "Player 8", score: 2222 },
-            { name: "Player 9", score: 1111 },
-            { name: "Player 10", score: 1000 },
-            { name: "Player 11", score: 900 },
-            { name: "Player 12", score: 800 },
-            { name: "Player 13", score: 700 },
-            { name: "Player 14", score: 600 },
-            { name: "Player 15", score: 500 }
+        const hallOfFameData = [
+            "Exofiend", "Ary", "Mally", "Creator 4", "Creator 5", "Creator 6", "Creator 7", "Creator 8", "Creator 9",
+            "Creator 10", "Creator 11", "Creator 12", "Creator 13", "Creator 14", "Creator 15"
         ];
 
-        const recordsPerPage = 5;
         let currentPage = 1;
+        const recordsPerPage = 3;
+        const totalPages = Math.ceil(hallOfFameData.length / recordsPerPage);
 
-        // Function to display records based on the current page
-        function displayRecords() {
-            const startIndex = (currentPage - 1) * recordsPerPage;
-            const endIndex = startIndex + recordsPerPage;
-            const currentRecords = records.slice(startIndex, endIndex);
-
-            const recordsContainer = document.getElementById("records-container");
-            recordsContainer.innerHTML = ''; // Clear previous records
-
-            currentRecords.forEach(record => {
-                const recordElement = document.createElement("div");
-                recordElement.classList.add("record");
-                recordElement.innerHTML = `
-                    <h2>${record.name}</h2>
-                    <p>Score: ${record.score}</p>
-                `;
-                recordsContainer.appendChild(recordElement);
+        function displayPage(page) {
+            const start = (page - 1) * recordsPerPage;
+            const end = start + recordsPerPage;
+            const recordsToShow = hallOfFameData.slice(start, end);
+            
+            const list = document.getElementById("halloffame-list");
+            list.innerHTML = ""; // Clear existing list
+            recordsToShow.forEach(record => {
+                const li = document.createElement("li");
+                li.textContent = record;
+                list.appendChild(li);
             });
 
-            // Show/hide previous and next buttons
-            document.getElementById("prevBtn").style.display = currentPage === 1 ? "none" : "inline-block";
-            document.getElementById("nextBtn").style.display = currentPage * recordsPerPage < records.length ? "inline-block" : "none";
+            document.getElementById("prevButton").disabled = page === 1;
+            document.getElementById("nextButton").disabled = page === totalPages;
         }
 
-        // Function to change pages
-        function changePage(direction) {
-            currentPage += direction;
-            displayRecords();
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                fadeOutIn(() => displayPage(currentPage));
+            }
         }
 
-        // Function to show Records page
-        function showRecordsPage() {
-            document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.add('active');
-            displayRecords();
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                fadeOutIn(() => displayPage(currentPage));
+            }
         }
+
+        function fadeOutIn(callback) {
+            const page = document.getElementById("halloffame");
+            page.style.opacity = "0";  // Fade out
+
+            setTimeout(() => {
+                callback();  // Execute the page change
+                page.style.opacity = "1";  // Fade in
+            }, 500);  // Wait for the fade out transition to complete before changing content
+        }
+
+        // Initialize the first page
+        displayPage(currentPage);
 
         // Function to show Hall of Fame page
         function showHallOfFame() {
             document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
             document.querySelector('.halloffame').classList.add('active');
         }
 
         // Function to show Games page
         function showGamesPage() {
             document.querySelector('.homepage').classList.remove('active');
-            document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
             document.querySelector('.games').classList.add('active');
         }
 
-        // Function to go back to homepage from other pages
-        function goBackToHome() {
+        // Function to go back to homepage from Hall of Fame
+        function goBack() {
             document.querySelector('.halloffame').classList.remove('active');
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
             document.querySelector('.homepage').classList.add('active');
         }
 
-        // Function to change the title of the tab when the heading is clicked
-        function changeTabTitle() {
-            document.title = "about blank"; // Change the title of the tab
+        // Function to go back to homepage from Games page
+        function goBackToHome() {
+            document.querySelector('.games').classList.remove('active');
+            document.querySelector('.homepage').classList.add('active');
         }
     </script>
 
