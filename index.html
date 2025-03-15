@@ -128,6 +128,7 @@
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
             <a href="#" class="button" onclick="openProxy()">Proxy</a>
+            <a href="#" class="button" onclick="showShoutoutsPage()">Shoutouts</a> <!-- New Shoutouts Button -->
         </div>
     </div>
 
@@ -171,23 +172,34 @@
         </div>
     </div>
 
+    <!-- Shoutouts Page -->
+    <div class="page shoutouts" style="background-image: url('your-background-image.jpg');">
+        <div class="container">
+            <h1>SHOUTOUTS</h1>
+            <p>Shoutout to all our supporters!</p>
+            <ul>
+                <li> SHOUTOUT TO COUCH FOR BEING THE FIRST PERSON FROM ANOTHER SCHOOL TO PLAY ON THIS WEBSITE!</li>
+                <li> W MALLY AND EXOFIEX6 FOR HELPING ME CODE THIS WEBSITE!!</li>
+                <li> Another shoutout to Mally for giving me the idea to make Ary Sus Gaming!</li>
+            </ul>
+            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+        </div>
+    </div>
+
     <script>
         // Track the visits in sessionStorage (only for this session)
         function updateVisitorCount() {
-            // Check if the visitor count is already stored in sessionStorage
             if (!sessionStorage.getItem("hasVisited")) {
-                // Only increment and save the count if the user hasn't visited before in this session
                 let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
                 allTimeCount += 1;
                 localStorage.setItem("allTimeCount", allTimeCount);
 
                 const today = new Date();
-                const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Start of the current week
+                const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); 
 
                 let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
                 const startDate = new Date(weeklyVisits.start);
 
-                // If it's a new week, reset the weekly visits counter
                 if (startDate.toDateString() !== startOfWeek.toDateString()) {
                     weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
                 } else {
@@ -196,14 +208,11 @@
 
                 localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
 
-                // Store that the user has visited in this session (so it doesn't get updated again on refresh)
                 sessionStorage.setItem("hasVisited", "true");
 
-                // Update the UI with the counts
                 document.getElementById("allTimeCount").textContent = allTimeCount;
                 document.getElementById("weeklyCount").textContent = weeklyVisits.count;
             } else {
-                // If the user has already visited, just display the current counts without modifying them
                 let allTimeCount = localStorage.getItem("allTimeCount") || "0";
                 let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
                 document.getElementById("allTimeCount").textContent = allTimeCount;
@@ -220,13 +229,11 @@
             }
         }
 
-        // Call the function when the page loads
         window.onload = function() {
             updateVisitorCount();
             showVisitorCountBox();
         }
 
-        // Proxy function
         function openProxy() {
             window.open("https://proxy.scraperapi.com", "_blank");
         }
@@ -247,6 +254,12 @@
         function showRecordsPage() {
             hideAllPages();
             document.querySelector('.records').classList.add('active');
+            showVisitorCountBox();
+        }
+
+        function showShoutoutsPage() {
+            hideAllPages();
+            document.querySelector('.shoutouts').classList.add('active');
             showVisitorCountBox();
         }
 
@@ -272,3 +285,4 @@
 
 </body>
 </html>
+
