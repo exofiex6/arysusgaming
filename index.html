@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ary Sus Gaming</title>
     <style>
+        /* General Body and Page Styling */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -12,6 +13,7 @@
             color: white;
         }
 
+        /* Homepage & Hall of Fame Container */
         .container {
             display: flex;
             flex-direction: column;
@@ -22,6 +24,7 @@
             color: white;
         }
 
+        /* Visitor Counter Box Styling */
         .visitor-count-box {
             position: fixed;
             top: 50%;
@@ -40,6 +43,7 @@
             margin: 10px 0;
         }
 
+        /* Page Specific Styling */
         .page {
             background-size: cover;
             background-position: center;
@@ -56,6 +60,7 @@
             opacity: 1;
         }
 
+        /* Other Page Styling */
         h1 {
             font-size: 4rem;
             margin: 0;
@@ -63,12 +68,14 @@
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
         }
+
         p {
             font-size: 1.5rem;
             margin-bottom: 20px;
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
             color: #ddd;
         }
+
         .button {
             background-color: #444444;
             padding: 15px 30px;
@@ -80,30 +87,32 @@
             transition: background-color 0.3s ease;
             margin: 10px;
         }
+
         .button:hover {
             background-color: #666666;
         }
 
-        /* Records Box Styling */
-        .records-box {
-            background-color: rgba(0, 0, 0, 0.6);
+        /* Horizontal Games Styling */
+        .games-container {
+            display: flex;
+            overflow-x: scroll;
             padding: 20px;
+        }
+
+        .game {
+            background-color: #444;
+            padding: 15px;
+            margin: 0 10px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        .records-box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .records-box li {
-            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 200px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
+    <!-- Visitor Counter Box (Visible only on Homepage) -->
     <div id="visitorCountBox" class="visitor-count-box">
         <h3>Visitor Count</h3>
         <p><strong>All-Time Visits:</strong> <span id="allTimeCount">0</span></p>
@@ -118,6 +127,7 @@
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
+            <a href="#" class="button" onclick="openProxy()">Proxy</a>
         </div>
     </div>
 
@@ -141,6 +151,13 @@
         <div class="container">
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
+            <div class="games-container">
+                <!-- Example game boxes -->
+                <div class="game">Game 1</div>
+                <div class="game">Game 2</div>
+                <div class="game">Game 3</div>
+                <!-- Add more games as needed -->
+            </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
@@ -150,44 +167,51 @@
         <div class="container">
             <h1>My Records</h1>
             <p>View and manage your records here.</p>
-
-            <div class="records-box">
-                <h3>Your Game Records</h3>
-                <ul>
-                    <li><strong>Record:</strong> <span id="highScore">Speedster beat appel level 1 in 17.9 seconds!</span></li>
-                    <li><strong>Record2:</strong> <span id="fastestTime">PartyBoy beat the entire Space Huggers in 12 minutes</span></li>
-                    <li><strong>Not made yet:</strong> <span id="gamesPlayed">-</span></li>
-                </ul>
-            </div>
-
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
     <script>
+        // Track the visits in sessionStorage (only for this session)
         function updateVisitorCount() {
-            const today = new Date();
-            const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
+            // Check if the visitor count is already stored in sessionStorage
+            if (!sessionStorage.getItem("hasVisited")) {
+                // Only increment and save the count if the user hasn't visited before in this session
+                let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
+                allTimeCount += 1;
+                localStorage.setItem("allTimeCount", allTimeCount);
 
-            let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
-            allTimeCount += 1;
-            localStorage.setItem("allTimeCount", allTimeCount);
+                const today = new Date();
+                const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Start of the current week
 
-            let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
-            const startDate = new Date(weeklyVisits.start);
+                let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
+                const startDate = new Date(weeklyVisits.start);
 
-            if (startDate.toDateString() !== startOfWeek.toDateString()) {
-                weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
+                // If it's a new week, reset the weekly visits counter
+                if (startDate.toDateString() !== startOfWeek.toDateString()) {
+                    weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
+                } else {
+                    weeklyVisits.count += 1;
+                }
+
+                localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
+
+                // Store that the user has visited in this session (so it doesn't get updated again on refresh)
+                sessionStorage.setItem("hasVisited", "true");
+
+                // Update the UI with the counts
+                document.getElementById("allTimeCount").textContent = allTimeCount;
+                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
             } else {
-                weeklyVisits.count += 1;
+                // If the user has already visited, just display the current counts without modifying them
+                let allTimeCount = localStorage.getItem("allTimeCount") || "0";
+                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
+                document.getElementById("allTimeCount").textContent = allTimeCount;
+                document.getElementById("weeklyCount").textContent = weeklyCount;
             }
-
-            localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
-
-            document.getElementById("allTimeCount").textContent = allTimeCount;
-            document.getElementById("weeklyCount").textContent = weeklyVisits.count;
         }
 
+        // Only show the visitor count box on the homepage
         function showVisitorCountBox() {
             if (document.querySelector('.homepage').classList.contains('active')) {
                 document.getElementById('visitorCountBox').style.display = 'block';
@@ -196,11 +220,18 @@
             }
         }
 
+        // Call the function when the page loads
         window.onload = function() {
             updateVisitorCount();
             showVisitorCountBox();
         }
 
+        // Proxy function
+        function openProxy() {
+            window.open("https://proxy.scraperapi.com", "_blank");
+        }
+
+        // Page navigation functions
         function showHallOfFame() {
             hideAllPages();
             document.querySelector('.halloffame').classList.add('active');
@@ -237,18 +268,7 @@
                 page.classList.remove('active');
             });
         }
-
-        function loadRecords() {
-            const highScore = localStorage.getItem("highScore") || "Not Set";
-            const fastestTime = localStorage.getItem("fastestTime") || "Not Set";
-            const gamesPlayed = localStorage.getItem("gamesPlayed") || "0";
-
-            document.getElementById("highScore").textContent = highScore;
-            document.getElementById("fastestTime").textContent = fastestTime;
-            document.getElementById("gamesPlayed").textContent = gamesPlayed;
-        }
     </script>
 
 </body>
 </html>
-
