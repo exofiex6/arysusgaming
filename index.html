@@ -242,7 +242,12 @@
     </div>
 
     <script>
-        // Track the visits in sessionStorage (only for this session)
+        window.onload = function() {
+            updateVisitorCount();  // Call the function on page load
+            showVisitorCountBox();  // Show the visitor count box
+        }
+
+        // Function to track the visitor count
         function updateVisitorCount() {
             if (!sessionStorage.getItem("hasVisited")) {
                 let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
@@ -263,4 +268,12 @@
 
                 localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
 
-                sessionStorage.setItem("
+                sessionStorage.setItem("hasVisited", "true");
+
+                document.getElementById("allTimeCount").textContent = allTimeCount;
+                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
+            } else {
+                let allTimeCount = localStorage.getItem("allTimeCount") || "0";
+                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
+                document.getElementById("allTimeCount
+
