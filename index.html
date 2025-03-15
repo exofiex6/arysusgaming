@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ary Sus Gaming</title>
     <style>
-        /* General Body and Page Styling */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -13,7 +12,6 @@
             color: white;
         }
 
-        /* Homepage & Hall of Fame Container */
         .container {
             display: flex;
             flex-direction: column;
@@ -24,7 +22,6 @@
             color: white;
         }
 
-        /* Visitor Counter Box Styling */
         .visitor-count-box {
             position: fixed;
             top: 50%;
@@ -43,7 +40,6 @@
             margin: 10px 0;
         }
 
-        /* Page Specific Styling */
         .page {
             background-size: cover;
             background-position: center;
@@ -60,7 +56,6 @@
             opacity: 1;
         }
 
-        /* Other Page Styling */
         h1 {
             font-size: 4rem;
             margin: 0;
@@ -89,37 +84,26 @@
             background-color: #666666;
         }
 
-        /* Games Section */
-        .games-container {
-            display: flex;
-            overflow-x: auto; /* Allows horizontal scrolling */
-            gap: 20px;
+        /* Records Box Styling */
+        .records-box {
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 20px;
-        }
-
-        .game-item {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            text-align: center;
             border-radius: 10px;
-            min-width: 250px; /* Ensures each game has a fixed width */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
         }
 
-        .game-item iframe {
-            width: 100%;
-            height: 200px;
-            border-radius: 10px;
+        .records-box ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        .game-item h2 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+        .records-box li {
+            margin: 10px 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- Visitor Counter Box (Visible only on Homepage) -->
     <div id="visitorCountBox" class="visitor-count-box">
         <h3>Visitor Count</h3>
         <p><strong>All-Time Visits:</strong> <span id="allTimeCount">0</span></p>
@@ -134,8 +118,6 @@
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
-            <!-- Proxy Button using ScraperAPI -->
-            <a href="https://api.scraperapi.com?api_key=YOUR_API_KEY&url=https://www.example.com" class="button" target="_blank">Go to Proxy</a>
         </div>
     </div>
 
@@ -154,28 +136,11 @@
         </div>
     </div>
 
-    <!-- Games Page (Horizontal Layout) -->
+    <!-- Games Page -->
     <div class="page games" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
-            <div class="games-container">
-                <!-- Example Game 1 -->
-                <div class="game-item">
-                    <h2>Game 1: Space Adventure</h2>
-                    <iframe src="https://www.example.com/space-adventure" frameborder="0"></iframe>
-                </div>
-                <!-- Example Game 2 -->
-                <div class="game-item">
-                    <h2>Game 2: Racing Frenzy</h2>
-                    <iframe src="https://www.example.com/racing-frenzy" frameborder="0"></iframe>
-                </div>
-                <!-- Example Game 3 -->
-                <div class="game-item">
-                    <h2>Game 3: Puzzle Master</h2>
-                    <iframe src="https://www.example.com/puzzle-master" frameborder="0"></iframe>
-                </div>
-            </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
@@ -185,45 +150,44 @@
         <div class="container">
             <h1>My Records</h1>
             <p>View and manage your records here.</p>
+
+            <div class="records-box">
+                <h3>Your Game Records</h3>
+                <ul>
+                    <li><strong>High Score:</strong> <span id="highScore">Not Set</span></li>
+                    <li><strong>Fastest Time:</strong> <span id="fastestTime">Not Set</span></li>
+                    <li><strong>Total Games Played:</strong> <span id="gamesPlayed">0</span></li>
+                </ul>
+            </div>
+
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
 
     <script>
-        // Track the visits in localStorage (for all-time and weekly count)
         function updateVisitorCount() {
             const today = new Date();
-            const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Set to the start of this week (Sunday)
+            const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay()));
 
-            // Only count the visit once per session
-            if (!sessionStorage.getItem("visited")) {
-                sessionStorage.setItem("visited", "true"); // Mark as visited for this session
+            let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
+            allTimeCount += 1;
+            localStorage.setItem("allTimeCount", allTimeCount);
 
-                // Update All-Time Visits
-                let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
-                allTimeCount += 1;
-                localStorage.setItem("allTimeCount", allTimeCount);
+            let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
+            const startDate = new Date(weeklyVisits.start);
 
-                // Update Weekly Visits
-                let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
-                const startDate = new Date(weeklyVisits.start);
-
-                // If it's a new week, reset the weekly visits counter
-                if (startDate.toDateString() !== startOfWeek.toDateString()) {
-                    weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
-                } else {
-                    weeklyVisits.count += 1;
-                }
-
-                localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
-
-                // Update the UI
-                document.getElementById("allTimeCount").textContent = allTimeCount;
-                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
+            if (startDate.toDateString() !== startOfWeek.toDateString()) {
+                weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
+            } else {
+                weeklyVisits.count += 1;
             }
+
+            localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
+
+            document.getElementById("allTimeCount").textContent = allTimeCount;
+            document.getElementById("weeklyCount").textContent = weeklyVisits.count;
         }
 
-        // Only show the visitor count box on the homepage
         function showVisitorCountBox() {
             if (document.querySelector('.homepage').classList.contains('active')) {
                 document.getElementById('visitorCountBox').style.display = 'block';
@@ -232,13 +196,11 @@
             }
         }
 
-        // Call functions when the page loads
         window.onload = function() {
             updateVisitorCount();
             showVisitorCountBox();
         }
 
-        // Page navigation functions
         function showHallOfFame() {
             hideAllPages();
             document.querySelector('.halloffame').classList.add('active');
@@ -275,7 +237,18 @@
                 page.classList.remove('active');
             });
         }
+
+        function loadRecords() {
+            const highScore = localStorage.getItem("highScore") || "Not Set";
+            const fastestTime = localStorage.getItem("fastestTime") || "Not Set";
+            const gamesPlayed = localStorage.getItem("gamesPlayed") || "0";
+
+            document.getElementById("highScore").textContent = highScore;
+            document.getElementById("fastestTime").textContent = fastestTime;
+            document.getElementById("gamesPlayed").textContent = gamesPlayed;
+        }
     </script>
 
 </body>
 </html>
+
