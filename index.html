@@ -108,7 +108,7 @@
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
             <!-- Proxy Button -->
-            <a href="https://www.proxysite.com" class="button" target="_blank">Go to Proxy</a>
+            <a href="https://www.kproxy.com" class="button" target="_blank">Go to Proxy</a>
         </div>
     </div>
 
@@ -146,32 +146,38 @@
     </div>
 
     <script>
-        // Track the visits in localStorage (if supported)
+        // Track the visits in sessionStorage (so it's only counted once per session)
         function updateVisitorCount() {
             const today = new Date();
             const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Set to the start of this week (Sunday)
 
-            // Update All-Time Visits
-            let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
-            allTimeCount += 1;
-            localStorage.setItem("allTimeCount", allTimeCount);
+            // Check if this session already has a visit count
+            if (!sessionStorage.getItem("visited")) {
+                // Mark that the session has counted a visit
+                sessionStorage.setItem("visited", "true");
 
-            // Update Weekly Visits
-            let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
-            const startDate = new Date(weeklyVisits.start);
+                // Update All-Time Visits (localStorage persists across sessions)
+                let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
+                allTimeCount += 1;
+                localStorage.setItem("allTimeCount", allTimeCount);
 
-            // If it's a new week, reset the weekly visits counter
-            if (startDate.toDateString() !== startOfWeek.toDateString()) {
-                weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
-            } else {
-                weeklyVisits.count += 1;
+                // Update Weekly Visits
+                let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
+                const startDate = new Date(weeklyVisits.start);
+
+                // If it's a new week, reset the weekly visits counter
+                if (startDate.toDateString() !== startOfWeek.toDateString()) {
+                    weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
+                } else {
+                    weeklyVisits.count += 1;
+                }
+
+                localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
+
+                // Update the UI
+                document.getElementById("allTimeCount").textContent = allTimeCount;
+                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
             }
-
-            localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
-
-            // Update the UI
-            document.getElementById("allTimeCount").textContent = allTimeCount;
-            document.getElementById("weeklyCount").textContent = weeklyVisits.count;
         }
 
         // Only show the visitor count box on the homepage
