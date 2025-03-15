@@ -110,9 +110,11 @@
         /* Game Boxes Styling */
         .games-container {
             display: flex;
-            flex-wrap: wrap; /* Allow the game boxes to wrap onto new lines */
-            justify-content: center;
+            justify-content: flex-start; /* Align items to the start of the container */
+            gap: 20px; /* Adds space between the game boxes */
             padding: 20px;
+            flex-wrap: nowrap; /* Prevents the items from wrapping */
+            overflow-x: auto; /* Allows horizontal scrolling if the boxes exceed the container width */
         }
 
         .game {
@@ -132,6 +134,12 @@
 
         .game:hover {
             transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .game img {
+            max-width: 100%; /* Ensures the image fits within the box */
+            max-height: 150px; /* Adjusts the max height of the image */
+            object-fit: contain; /* Ensures the image retains its aspect ratio */
         }
 
         .game h2 {
@@ -184,17 +192,22 @@
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
             <div class="games-container">
-                <!-- Example game boxes -->
+                <!-- Game Box 1 with clickable image -->
                 <div class="game">
                     <a href="https://msg1.pages.dev" target="_blank">
-                    <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="msg />    
+                        <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Game 1" />
+                    </a>
+                    <h2>Game 1</h2>
                 </div>
+                <!-- Game Box 2 -->
                 <div class="game">
                     <h2>Game 2</h2>
                 </div>
+                <!-- Game Box 3 -->
                 <div class="game">
                     <h2>Game 3</h2>
                 </div>
+                <!-- Game Box 4 -->
                 <div class="game">
                     <h2>Game 4</h2>
                 </div>
@@ -282,21 +295,4 @@
         function showPage(page) {
             hideAllPages();
             document.querySelector(`.${page}`).classList.add('active');
-        }
-
-        // Go back to the homepage
-        function goBack() {
-            hideAllPages();
-            document.querySelector('.homepage').classList.add('active');
-        }
-
-        function hideAllPages() {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-        }
-    </script>
-
-</body>
-</html>
+       
