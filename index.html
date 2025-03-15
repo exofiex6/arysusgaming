@@ -91,22 +91,26 @@
 
         /* Games Section */
         .games-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            display: flex;
+            overflow-x: auto; /* Allows horizontal scrolling */
             gap: 20px;
             padding: 20px;
         }
+
         .game-item {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 20px;
             text-align: center;
             border-radius: 10px;
+            min-width: 250px; /* Ensures each game has a fixed width */
         }
+
         .game-item iframe {
             width: 100%;
             height: 200px;
             border-radius: 10px;
         }
+
         .game-item h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
@@ -130,8 +134,8 @@
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
-            <!-- Proxy Button -->
-            <a href="https://www.kproxy.com" class="button" target="_blank">Go to Proxy</a>
+            <!-- Proxy Button (Updated to use Proxy Nova) -->
+            <a href="https://www.proxynova.com/proxy-server-list/" class="button" target="_blank">Go to Proxy Nova</a>
         </div>
     </div>
 
@@ -150,7 +154,7 @@
         </div>
     </div>
 
-    <!-- Games Page (Restored with Content) -->
+    <!-- Games Page (Horizontal Layout) -->
     <div class="page games" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Games</h1>
