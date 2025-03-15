@@ -67,6 +67,7 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
+            cursor: pointer; /* Make it clickable */
         }
 
         p {
@@ -163,7 +164,7 @@
     <!-- Homepage Content -->
     <div class="page homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
-            <h1>Ary Sus Gaming</h1>
+            <h1 onclick="setAboutBlank()">Ary Sus Gaming</h1> <!-- Title clickable -->
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
             <a href="#" class="button" onclick="showPage('games')">Games</a>
@@ -262,50 +263,4 @@
 
                 localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
 
-                sessionStorage.setItem("hasVisited", "true");
-
-                document.getElementById("allTimeCount").textContent = allTimeCount;
-                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
-            } else {
-                let allTimeCount = localStorage.getItem("allTimeCount") || "0";
-                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
-                document.getElementById("allTimeCount").textContent = allTimeCount;
-                document.getElementById("weeklyCount").textContent = weeklyCount;
-            }
-        }
-
-        // Only show the visitor count box on the homepage
-        function showVisitorCountBox() {
-            if (document.querySelector('.homepage').classList.contains('active')) {
-                document.getElementById('visitorCountBox').style.display = 'block';
-            } else {
-                document.getElementById('visitorCountBox').style.display = 'none';
-            }
-        }
-
-        window.onload = function() {
-            updateVisitorCount();
-            showVisitorCountBox();
-        }
-
-        function openProxy() {
-            window.open("https://proxy.scraperapi.com", "_blank");
-        }
-
-        // Show the selected page and hide others
-        function hideAllPages() {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-        }
-
-        function showPage(page) {
-            hideAllPages();
-            document.querySelector(`.${page}`).classList.add('active');
-        }
-
-        function goBack() {
-            showPage('homepage');
-        }
-    </script>
-</body>
-</html>
+                sessionStorage.setItem("
