@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,6 +109,21 @@
             width: 200px;
             text-align: center;
         }
+
+        /* Shoutouts List Styling */
+        .shoutouts ul {
+            list-style-type: none; /* Removes bullet points */
+            padding: 0; /* Removes default padding */
+            text-align: center; /* Centers the text */
+        }
+
+        .shoutouts li {
+            font-size: 1.5rem; /* Increases the font size */
+            margin: 15px 0; /* Adds spacing between shoutouts */
+            font-weight: bold; /* Makes the shoutouts text bold */
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5); /* Adds a shadow effect for better readability */
+            color: #FFD700; /* Makes the shoutouts text golden */
+        }
     </style>
 </head>
 <body>
@@ -178,9 +194,9 @@
             <h1>SHOUTOUTS</h1>
             <p>Shoutout to all our supporters!</p>
             <ul>
-                <li> SHOUTOUT TO COUCH FOR BEING THE FIRST PERSON FROM ANOTHER SCHOOL TO PLAY ON THIS WEBSITE!</li>
-                <li> W MALLY AND EXOFIEX6 FOR HELPING ME CODE THIS WEBSITE!!</li>
-                <li> Another shoutout to Mally for giving me the idea to make Ary Sus Gaming!</li>
+                <li>SHOUTOUT TO COUCH FOR BEING THE FIRST PERSON FROM ANOTHER SCHOOL TO PLAY ON THIS WEBSITE!</li>
+                <li>W MALLY AND EXOFIEX6 FOR HELPING ME CODE THIS WEBSITE!!</li>
+                <li>Another shoutout to Mally for giving me the idea to make Ary Sus Gaming!</li>
             </ul>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
@@ -214,75 +230,4 @@
                 document.getElementById("weeklyCount").textContent = weeklyVisits.count;
             } else {
                 let allTimeCount = localStorage.getItem("allTimeCount") || "0";
-                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
-                document.getElementById("allTimeCount").textContent = allTimeCount;
-                document.getElementById("weeklyCount").textContent = weeklyCount;
-            }
-        }
-
-        // Only show the visitor count box on the homepage
-        function showVisitorCountBox() {
-            if (document.querySelector('.homepage').classList.contains('active')) {
-                document.getElementById('visitorCountBox').style.display = 'block';
-            } else {
-                document.getElementById('visitorCountBox').style.display = 'none';
-            }
-        }
-
-        window.onload = function() {
-            updateVisitorCount();
-            showVisitorCountBox();
-        }
-
-        function openProxy() {
-            window.open("https://proxy.scraperapi.com", "_blank");
-        }
-
-        // Page navigation functions
-        function showHallOfFame() {
-            hideAllPages();
-            document.querySelector('.halloffame').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function showGamesPage() {
-            hideAllPages();
-            document.querySelector('.games').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function showRecordsPage() {
-            hideAllPages();
-            document.querySelector('.records').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function showShoutoutsPage() {
-            hideAllPages();
-            document.querySelector('.shoutouts').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function goBack() {
-            hideAllPages();
-            document.querySelector('.homepage').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function goBackToHome() {
-            hideAllPages();
-            document.querySelector('.homepage').classList.add('active');
-            showVisitorCountBox();
-        }
-
-        function hideAllPages() {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-        }
-    </script>
-
-</body>
-</html>
-
+                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0
