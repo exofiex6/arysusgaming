@@ -251,39 +251,72 @@
         </div>
     </div>
 
-    <script>
-        window.onload = function() {
-            updateVisitorCount();  // Call the function on page load
-            showVisitorCountBox();  // Show the visitor count box
-        }
+   <script>
+    window.onload = function() {
+        updateVisitorCount();  // Call the function on page load
+        showVisitorCountBox();  // Show the visitor count box
+    }
 
-        // Function to track the visitor count
-        function updateVisitorCount() {
-            if (!sessionStorage.getItem("hasVisited")) {
-                let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
-                allTimeCount += 1;
-                localStorage.setItem("allTimeCount", allTimeCount);
+    // Function to track the visitor count
+    function updateVisitorCount() {
+        if (!sessionStorage.getItem("hasVisited")) {
+            let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
+            allTimeCount += 1;
+            localStorage.setItem("allTimeCount", allTimeCount);
 
-                const today = new Date();
-                const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); 
+            const today = new Date();
+            const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); 
 
-                let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
-                const startDate = new Date(weeklyVisits.start);
+            let weeklyVisits = JSON.parse(localStorage.getItem("weeklyVisits") || '{"start": "", "count": 0}');
+            const startDate = new Date(weeklyVisits.start);
 
-                if (startDate.toDateString() !== startOfWeek.toDateString()) {
-                    weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
-                } else {
-                    weeklyVisits.count += 1;
-                }
-
-                localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
-
-                sessionStorage.setItem("hasVisited", "true");
-
-                document.getElementById("allTimeCount").textContent = allTimeCount;
-                document.getElementById("weeklyCount").textContent = weeklyVisits.count;
+            if (startDate.toDateString() !== startOfWeek.toDateString()) {
+                weeklyVisits = { start: startOfWeek.toDateString(), count: 1 };
             } else {
-                let allTimeCount = localStorage.getItem("allTimeCount") || "0";
-                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
-                document.getElementById("allTimeCount
+                weeklyVisits.count += 1;
+            }
 
+            localStorage.setItem("weeklyVisits", JSON.stringify(weeklyVisits));
+
+            sessionStorage.setItem("hasVisited", "true");
+
+            document.getElementById("allTimeCount").textContent = allTimeCount;
+            document.getElementById("weeklyCount").textContent = weeklyVisits.count;
+        } else {
+            let allTimeCount = localStorage.getItem("allTimeCount") || "0";
+            let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
+            document.getElementById("allTimeCount").textContent = allTimeCount;
+            document.getElementById("weeklyCount").textContent = weeklyCount;
+        }
+    }
+
+    // Function to show visitor count box
+    function showVisitorCountBox() {
+        document.getElementById('visitorCountBox').style.display = 'block';
+    }
+
+    // Function to navigate to different pages
+    function showPage(page) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(function(p) {
+            p.classList.remove('active');  // Hide all pages
+        });
+
+        document.querySelector('.' + page).classList.add('active');  // Show selected page
+    }
+
+    // Function to go back to homepage
+    function goBack() {
+        showPage('homepage');
+    }
+
+    // Function to open proxy (could be customized to open a proxy page or similar)
+    function openProxy() {
+        window.open("https://proxylinkidk.com/btwthiswascodedbymallylol/rizz/", "_blank");
+    }
+
+    // Optional function for the clickable title (Ary Sus Gaming)
+    function setAboutBlank() {
+        window.location.href = 'about.html'; // You can change it to any page or URL you want
+    }
+</script>
