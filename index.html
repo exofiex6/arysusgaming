@@ -94,27 +94,27 @@
 
         /* Shoutouts List Styling */
         .shoutouts ul {
-            list-style-type: none; /* Removes bullet points */
-            padding: 0; /* Removes default padding */
-            text-align: center; /* Centers the text */
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
         }
 
         .shoutouts li {
-            font-size: 1.5rem; /* Increases the font size */
-            margin: 15px 0; /* Adds spacing between shoutouts */
-            font-weight: bold; /* Makes the shoutouts text bold */
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5); /* Adds a shadow effect for better readability */
-            color: #FFD700; /* Makes the shoutouts text golden */
+            font-size: 1.5rem;
+            margin: 15px 0;
+            font-weight: bold;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+            color: #FFD700;
         }
 
         /* Game Boxes Styling */
         .games-container {
             display: flex;
-            justify-content: flex-start; /* Align items to the start of the container */
-            gap: 20px; /* Adds space between the game boxes */
+            justify-content: flex-start;
+            gap: 20px;
             padding: 20px;
-            flex-wrap: nowrap; /* Prevents the items from wrapping */
-            overflow-x: auto; /* Allows horizontal scrolling if the boxes exceed the container width */
+            flex-wrap: nowrap;
+            overflow-x: auto;
         }
 
         .game {
@@ -133,13 +133,13 @@
         }
 
         .game:hover {
-            transform: scale(1.05); /* Slight zoom effect on hover */
+            transform: scale(1.05);
         }
 
         .game img {
-            max-width: 100%; /* Ensures the image fits within the box */
-            max-height: 150px; /* Adjusts the max height of the image */
-            object-fit: contain; /* Ensures the image retains its aspect ratio */
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
         }
 
         .game h2 {
@@ -167,7 +167,7 @@
             <a href="#" class="button" onclick="showPage('games')">Games</a>
             <a href="#" class="button" onclick="showPage('records')">My Records</a>
             <a href="#" class="button" onclick="openProxy()">Proxy</a>
-            <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a> <!-- New Shoutouts Button -->
+            <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
         </div>
     </div>
 
@@ -192,22 +192,18 @@
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
             <div class="games-container">
-                <!-- Game Box 1 with clickable image -->
                 <div class="game">
                     <a href="https://msg1.pages.dev" target="_blank">
                         <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Game 1" />
                     </a>
                     <h2>Game 1</h2>
                 </div>
-                <!-- Game Box 2 -->
                 <div class="game">
                     <h2>Game 2</h2>
                 </div>
-                <!-- Game Box 3 -->
                 <div class="game">
                     <h2>Game 3</h2>
                 </div>
-                <!-- Game Box 4 -->
                 <div class="game">
                     <h2>Game 4</h2>
                 </div>
@@ -292,7 +288,19 @@
         }
 
         // Show the selected page and hide others
+        function hideAllPages() {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+        }
+
         function showPage(page) {
             hideAllPages();
             document.querySelector(`.${page}`).classList.add('active');
-       
+        }
+
+        function goBack() {
+            showPage('homepage');
+        }
+    </script>
+</body>
+</html>
