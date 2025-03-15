@@ -88,6 +88,29 @@
         .button:hover {
             background-color: #666666;
         }
+
+        /* Games Section */
+        .games-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .game-item {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .game-item iframe {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+        }
+        .game-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -127,11 +150,28 @@
         </div>
     </div>
 
-    <!-- Games Page -->
+    <!-- Games Page (Restored with Content) -->
     <div class="page games" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
+            <div class="games-container">
+                <!-- Example Game 1 -->
+                <div class="game-item">
+                    <h2>Game 1: Space Adventure</h2>
+                    <iframe src="https://www.example.com/space-adventure" frameborder="0"></iframe>
+                </div>
+                <!-- Example Game 2 -->
+                <div class="game-item">
+                    <h2>Game 2: Racing Frenzy</h2>
+                    <iframe src="https://www.example.com/racing-frenzy" frameborder="0"></iframe>
+                </div>
+                <!-- Example Game 3 -->
+                <div class="game-item">
+                    <h2>Game 3: Puzzle Master</h2>
+                    <iframe src="https://www.example.com/puzzle-master" frameborder="0"></iframe>
+                </div>
+            </div>
             <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
         </div>
     </div>
@@ -146,17 +186,16 @@
     </div>
 
     <script>
-        // Track the visits in sessionStorage (so it's only counted once per session)
+        // Track the visits in localStorage (for all-time and weekly count)
         function updateVisitorCount() {
             const today = new Date();
             const startOfWeek = new Date(today.setDate(today.getDate() - today.getDay())); // Set to the start of this week (Sunday)
 
-            // Check if this session already has a visit count
+            // Only count the visit once per session
             if (!sessionStorage.getItem("visited")) {
-                // Mark that the session has counted a visit
-                sessionStorage.setItem("visited", "true");
+                sessionStorage.setItem("visited", "true"); // Mark as visited for this session
 
-                // Update All-Time Visits (localStorage persists across sessions)
+                // Update All-Time Visits
                 let allTimeCount = parseInt(localStorage.getItem("allTimeCount") || "0");
                 allTimeCount += 1;
                 localStorage.setItem("allTimeCount", allTimeCount);
