@@ -106,6 +106,39 @@
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5); /* Adds a shadow effect for better readability */
             color: #FFD700; /* Makes the shoutouts text golden */
         }
+
+        /* Game Boxes Styling */
+        .games-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow the game boxes to wrap onto new lines */
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .game {
+            background-color: #444;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 200px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .game:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        .game h2 {
+            font-size: 1.5rem;
+            color: white;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
@@ -152,10 +185,18 @@
             <p>Check out some cool games below!</p>
             <div class="games-container">
                 <!-- Example game boxes -->
-                <a href="MSG">https://msg1.pages.dev/IMGS/MSG.png</a>
-                <div class="game">Game 2</div>
-                <div class="game">Game 3</div>
-                <!-- Add more games as needed -->
+                <div class="game">
+                    <h2>Game 1</h2>
+                </div>
+                <div class="game">
+                    <h2>Game 2</h2>
+                </div>
+                <div class="game">
+                    <h2>Game 3</h2>
+                </div>
+                <div class="game">
+                    <h2>Game 4</h2>
+                </div>
             </div>
             <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
