@@ -119,15 +119,16 @@
 
         .game {
             background-color: #444;
-            padding: 20px;
+            padding: 0;
             margin: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             width: 200px;
             height: 250px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             transition: transform 0.3s ease;
         }
@@ -137,15 +138,16 @@
         }
 
         .game img {
-            max-width: 100%;
-            max-height: 150px;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .game h2 {
             font-size: 1.5rem;
             color: white;
             text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -193,19 +195,22 @@
             <p>Check out some cool games below!</p>
             <div class="games-container">
                 <div class="game">
+                    <h2>Game 1</h2>
                     <a href="https://msg1.pages.dev" target="_blank">
                         <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Game 1" />
                     </a>
-                    <h2>Game 1</h2>
                 </div>
                 <div class="game">
                     <h2>Game 2</h2>
+                    <img src="https://via.placeholder.com/200x150" alt="Game 2" />
                 </div>
                 <div class="game">
                     <h2>Game 3</h2>
+                    <img src="https://via.placeholder.com/200x150" alt="Game 3" />
                 </div>
                 <div class="game">
                     <h2>Game 4</h2>
+                    <img src="https://via.placeholder.com/200x150" alt="Game 4" />
                 </div>
             </div>
             <a href="#" class="button" onclick="goBack()">Back to Home</a>
