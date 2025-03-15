@@ -58,75 +58,32 @@
             background-color: #666666; /* Darker hover effect */
         }
 
-        /* Visitor Count Box */
-        .visitor-count-box {
-            position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            color: #ddd;
-            font-size: 1rem;
-            text-align: left;
-            width: 180px;
+        /* Visitor Count Section */
+        .visitor-count {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
         }
 
-        .visitor-count-box p {
-            margin: 10px 0;
-        }
-
-        /* Homepage Content */
-        .homepage {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100vh;
-            display: block;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better contrast */
-        }
-
-        .homepage.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Hall of Fame Page */
-        .halloffame {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100vh;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        /* Show active page */
-        .active {
-            display: block;
-            opacity: 1;
+        .visitor-count p {
+            margin: 5px;
         }
     </style>
 </head>
 <body>
-
-    <!-- Visitor Count Box -->
-    <div class="visitor-count-box">
-        <p><strong>Overall Visitors:</strong> <span id="totalVisitors">Loading...</span></p>
-        <p><strong>Weekly Visitors:</strong> <span id="weeklyVisitors">Loading...</span></p>
-    </div>
 
     <!-- Homepage Content -->
     <div class="homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Ary Sus Gaming</h1>
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
+            
+            <!-- Visitor Counter -->
+            <div class="visitor-count">
+                <p><strong>Overall Visitors:</strong> <span id="totalVisitors">Loading...</span></p>
+                <p><strong>Weekly Visitors:</strong> <span id="weeklyVisitors">Loading...</span></p>
+            </div>
+
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
@@ -302,3 +259,4 @@
 
 </body>
 </html>
+
