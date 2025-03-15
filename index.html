@@ -122,11 +122,11 @@
         <div class="container">
             <h1>Ary Sus Gaming</h1>
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
-            <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
-            <a href="#" class="button" onclick="showGamesPage()">Games</a>
-            <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
+            <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
+            <a href="#" class="button" onclick="showPage('games')">Games</a>
+            <a href="#" class="button" onclick="showPage('records')">My Records</a>
             <a href="#" class="button" onclick="openProxy()">Proxy</a>
-            <a href="#" class="button" onclick="showShoutoutsPage()">Shoutouts</a> <!-- New Shoutouts Button -->
+            <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a> <!-- New Shoutouts Button -->
         </div>
     </div>
 
@@ -157,7 +157,7 @@
                 <div class="game">Game 3</div>
                 <!-- Add more games as needed -->
             </div>
-            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -166,7 +166,7 @@
         <div class="container">
             <h1>My Records</h1>
             <p>View and manage your records here.</p>
-            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -180,7 +180,7 @@
                 <li>W MALLY AND EXOFIEX6 FOR HELPING ME CODE THIS WEBSITE!!</li>
                 <li>Another shoutout to Mally for giving me the idea to make Ary Sus Gaming!</li>
             </ul>
-            <a href="#" class="button" onclick="goBackToHome()">Back to Home</a>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -236,5 +236,25 @@
             window.open("https://proxy.scraperapi.com", "_blank");
         }
 
-        // Page navigation functions
-        fun
+        // Show the selected page and hide others
+        function showPage(page) {
+            hideAllPages();
+            document.querySelector(`.${page}`).classList.add('active');
+        }
+
+        // Go back to the homepage
+        function goBack() {
+            hideAllPages();
+            document.querySelector('.homepage').classList.add('active');
+        }
+
+        function hideAllPages() {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+        }
+    </script>
+
+</body>
+</html>
