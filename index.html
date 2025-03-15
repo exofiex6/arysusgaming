@@ -24,6 +24,24 @@
             color: white;
         }
 
+        /* Background Image Settings */
+        .page {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+            display: none; /* Initially hidden */
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better contrast */
+        }
+
+        /* Show active page */
+        .active {
+            display: block;
+            opacity: 1;
+        }
+
         /* Heading Styling */
         h1 {
             font-size: 4rem;
@@ -58,32 +76,57 @@
             background-color: #666666; /* Darker hover effect */
         }
 
-        /* Visitor Count Section */
-        .visitor-count {
-            margin-top: 30px;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
+        /* Games Page Styling */
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
 
-        .visitor-count p {
-            margin: 5px;
+        .game {
+            background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent dark background for games */
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            color: white;
         }
+
+        .game iframe {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px;
+        }
+
+        /* Records Page Styling */
+        .records-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .record-box {
+            background-color: rgba(255, 255, 255, 0.1); /* Dark background for record boxes */
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            width: 200px;
+            color: white;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Homepage Content -->
-    <div class="homepage active" style="background-image: url('your-background-image.jpg');">
+    <div class="page homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Ary Sus Gaming</h1>
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
-            
-            <!-- Visitor Counter -->
-            <div class="visitor-count">
-                <p><strong>Overall Visitors:</strong> <span id="totalVisitors">Loading...</span></p>
-                <p><strong>Weekly Visitors:</strong> <span id="weeklyVisitors">Loading...</span></p>
-            </div>
-
             <a href="#" class="button" onclick="showHallOfFame()">Hall of Fame</a>
             <a href="#" class="button" onclick="showGamesPage()">Games</a>
             <a href="#" class="button" onclick="showRecordsPage()">My Records</a>
@@ -91,12 +134,12 @@
     </div>
 
     <!-- Hall of Fame Page -->
-    <div id="halloffame" class="halloffame" style="background-image: url('your-background-image.jpg');">
+    <div class="page halloffame" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Hall of Fame</h1>
             <p>Creators of this website:</p>
             <ul>
-                <li>Exofiend</li>
+                <li>Exofiex6</li>
                 <li>Ary</li>
                 <li>Mally</li>
             </ul>
@@ -106,7 +149,7 @@
     </div>
 
     <!-- Games Page -->
-    <div id="games" class="games" style="background-image: url('your-background-image.jpg');">
+    <div class="page games" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
@@ -137,7 +180,7 @@
     </div>
 
     <!-- Records Page -->
-    <div id="records" class="records" style="background-image: url('your-background-image.jpg');">
+    <div class="page records" style="background-image: url('your-background-image.jpg');">
         <div class="container">
             <h1>My Records</h1>
             <p>View and manage your records here.</p>
@@ -168,58 +211,37 @@
     </div>
 
     <script>
-        // Check if localStorage exists
-        if (!localStorage.getItem('totalVisitors')) {
-            localStorage.setItem('totalVisitors', 0);  // Initialize total visitors count
-        }
-        if (!localStorage.getItem('weeklyVisitors')) {
-            localStorage.setItem('weeklyVisitors', 0);  // Initialize weekly visitors count
-        }
-
-        // Get current date
-        const currentDate = new Date();
-        const currentWeek = Math.ceil(currentDate.getDate() / 7);
-
-        // Store the current week in localStorage if it's the first time visiting this week
-        if (!localStorage.getItem('lastVisitWeek') || localStorage.getItem('lastVisitWeek') !== currentWeek.toString()) {
-            localStorage.setItem('lastVisitWeek', currentWeek.toString());
-            localStorage.setItem('weeklyVisitors', 1);  // Reset the weekly visitor count
-        } else {
-            localStorage.setItem('weeklyVisitors', parseInt(localStorage.getItem('weeklyVisitors')) + 1);
-        }
-
-        // Increment total visitor count
-        localStorage.setItem('totalVisitors', parseInt(localStorage.getItem('totalVisitors')) + 1);
-
-        // Update the visitor counts on the page
-        document.getElementById('totalVisitors').innerText = localStorage.getItem('totalVisitors');
-        document.getElementById('weeklyVisitors').innerText = localStorage.getItem('weeklyVisitors');
-        
         // Page navigation functions
         function showHallOfFame() {
-            document.querySelector('.homepage').classList.remove('active');
+            hideAllPages();
             document.querySelector('.halloffame').classList.add('active');
         }
 
         function showGamesPage() {
-            document.querySelector('.homepage').classList.remove('active');
+            hideAllPages();
             document.querySelector('.games').classList.add('active');
         }
 
         function showRecordsPage() {
-            document.querySelector('.homepage').classList.remove('active');
+            hideAllPages();
             document.querySelector('.records').classList.add('active');
         }
 
         function goBack() {
-            document.querySelector('.halloffame').classList.remove('active');
+            hideAllPages();
             document.querySelector('.homepage').classList.add('active');
         }
 
         function goBackToHome() {
-            document.querySelector('.games').classList.remove('active');
-            document.querySelector('.records').classList.remove('active');
+            hideAllPages();
             document.querySelector('.homepage').classList.add('active');
+        }
+
+        function hideAllPages() {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
         }
 
         // Pagination logic
@@ -259,4 +281,3 @@
 
 </body>
 </html>
-
