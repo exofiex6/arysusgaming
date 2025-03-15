@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -93,23 +92,6 @@
             background-color: #666666;
         }
 
-        /* Horizontal Games Styling */
-        .games-container {
-            display: flex;
-            overflow-x: scroll;
-            padding: 20px;
-        }
-
-        .game {
-            background-color: #444;
-            padding: 15px;
-            margin: 0 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            width: 200px;
-            text-align: center;
-        }
-
         /* Shoutouts List Styling */
         .shoutouts ul {
             list-style-type: none; /* Removes bullet points */
@@ -190,7 +172,7 @@
 
     <!-- Shoutouts Page -->
     <div class="page shoutouts" style="background-image: url('your-background-image.jpg');">
-        <div class="container">
+        <div class="container shoutouts">
             <h1>SHOUTOUTS</h1>
             <p>Shoutout to all our supporters!</p>
             <ul>
@@ -230,4 +212,29 @@
                 document.getElementById("weeklyCount").textContent = weeklyVisits.count;
             } else {
                 let allTimeCount = localStorage.getItem("allTimeCount") || "0";
-                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0
+                let weeklyCount = JSON.parse(localStorage.getItem("weeklyVisits") || '{"count": 0}').count;
+                document.getElementById("allTimeCount").textContent = allTimeCount;
+                document.getElementById("weeklyCount").textContent = weeklyCount;
+            }
+        }
+
+        // Only show the visitor count box on the homepage
+        function showVisitorCountBox() {
+            if (document.querySelector('.homepage').classList.contains('active')) {
+                document.getElementById('visitorCountBox').style.display = 'block';
+            } else {
+                document.getElementById('visitorCountBox').style.display = 'none';
+            }
+        }
+
+        window.onload = function() {
+            updateVisitorCount();
+            showVisitorCountBox();
+        }
+
+        function openProxy() {
+            window.open("https://proxy.scraperapi.com", "_blank");
+        }
+
+        // Page navigation functions
+        fun
