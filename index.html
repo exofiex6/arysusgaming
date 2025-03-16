@@ -24,17 +24,6 @@
             color: white;
         }
 
-        /* Homepage Background Image */
-        .homepage-background img {
-            width: 100%;
-            height: 100vh;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1; /* Make sure the image stays behind content */
-        }
-
         /* Visitor Counter Box Styling */
         .visitor-count-box {
             position: fixed;
@@ -55,9 +44,9 @@
         }
 
         .Msg {
-            position: absolute;
-            top: 12%;
-            left: 90%;
+         position: absolute;
+        top: 12%;
+        left: 90%;
         }
 
         .page {
@@ -83,7 +72,7 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
-            cursor: pointer;
+            cursor: pointer; /* Make it clickable */
         }
 
         p {
@@ -170,24 +159,23 @@
         /* Search Bar Styling */
         .search-container {
             margin-bottom: 20px;
-            text-align: center;
+            display: flex;
+            justify-content: center;
         }
 
-        .search-container input {
+        .search-bar {
             padding: 10px;
+            width: 50%;
             font-size: 1rem;
-            width: 80%;
-            max-width: 400px;
             border-radius: 5px;
-            border: 2px solid #444;
-            margin-top: 20px;
+            border: none;
+            outline: none;
         }
-
     </style>
 </head>
 <body>
 
-    <!-- Visitor Counter Box -->
+    <!-- Visitor Counter Box (Visible only on Homepage) -->
     <div id="visitorCountBox" class="visitor-count-box">
         <h3>Visitor Count</h3>
         <p><strong>All-Time Visits:</strong> <span id="allTimeCount">0</span></p>
@@ -195,9 +183,9 @@
     </div>
 
     <!-- Homepage Content -->
-    <div class="page homepage active">
+    <div class="page homepage active" style="background-image: url('your-background-image.jpg');">
         <div class="container">
-            <h1 onclick="setAboutBlank()">Ary Sus Gaming</h1>
+            <h1 onclick="setAboutBlank()">Ary Sus Gaming</h1> <!-- Title clickable -->
             <p>Welcome to Ary Sus Gaming, your ultimate gaming destination!</p>
             <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
             <a href="#" class="button" onclick="showPage('games')">Games</a>
@@ -208,19 +196,20 @@
         </div>
     </div>
 
-    <!-- Homepage Background Image -->
-    <div class="homepage-background">
-        <img src="your-image-path.jpg" alt="Homepage Background">
-    </div>
-
     <!-- Games Page -->
-    <div class="page games">
+    <div class="page games" style="background-image: url('your-background-image.jpg');">
         <div class="container">
-            <div class="search-container">
-                <input type="text" id="searchGames" placeholder="Search Games..." onkeyup="filterGames()">
+            <div class="Msg">
+                <a href="https://msg1.pages.dev/" target="_blank"><img src="Images/MSG.png" width="110px" height="550px"></a>
             </div>
             <h1>Games</h1>
             <p>Check out some cool games below!</p>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" id="searchBar" class="search-bar" placeholder="Search for games..." oninput="filterGames()">
+            </div>
+
             <div class="games-container" id="gamesContainer">
                 <div class="game">
                     <h2>Mally's Sussy Gaming</h2>
@@ -246,23 +235,22 @@
     </div>
 
     <script>
-        // Function to filter games based on search input
         function filterGames() {
-            let input = document.getElementById("searchGames").value.toLowerCase();
-            let gamesContainer = document.getElementById("gamesContainer");
-            let games = gamesContainer.getElementsByClassName("game");
-
-            Array.from(games).forEach(function(game) {
-                let gameName = game.getElementsByTagName("h2")[0].textContent.toLowerCase();
-                if (gameName.includes(input)) {
-                    game.style.display = "";
+            const searchTerm = document.getElementById('searchBar').value.toLowerCase();
+            const games = document.querySelectorAll('.game');
+            
+            games.forEach(function(game) {
+                const title = game.querySelector('h2').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    game.style.display = 'block';
                 } else {
-                    game.style.display = "none";
+                    game.style.display = 'none';
                 }
             });
         }
 
-        // Existing visitor count and page functions...
+        // The rest of the JavaScript remains the same
     </script>
+
 </body>
 </html>
