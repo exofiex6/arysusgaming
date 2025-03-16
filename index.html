@@ -235,6 +235,22 @@
     </div>
 
     <script>
+        // Function to navigate to different pages
+        function showPage(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(function(p) {
+                p.classList.remove('active');  // Hide all pages
+            });
+
+            document.querySelector('.' + page).classList.add('active');  // Show selected page
+        }
+
+        // Function to go back to homepage
+        function goBack() {
+            showPage('homepage');
+        }
+
+        // Function to filter games
         function filterGames() {
             const searchTerm = document.getElementById('searchBar').value.toLowerCase();
             const games = document.querySelectorAll('.game');
@@ -249,7 +265,7 @@
             });
         }
 
-        // The rest of the JavaScript remains the same
+        // The rest of your JavaScript (visitor count, etc.) remains unchanged.
     </script>
 
 </body>
