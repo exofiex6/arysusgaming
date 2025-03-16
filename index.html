@@ -141,6 +141,30 @@
             text-decoration: none;
         }
 
+        /* Hall of Fame Section Styling */
+        .halloffame-container {
+            text-align: center;
+            color: white;
+        }
+
+        .halloffame-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .halloffame-container h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        .halloffame-container .famous-people {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
         /* Records Section Styling */
         .record-boxes {
             display: flex;
@@ -200,6 +224,16 @@
         </div>
     </div>
 
+    <!-- Hall of Fame Page -->
+    <div class="page halloffame" style="background-image: url('https://wallpapers.com/images/file/among-us-background-oax75cuqy7sjcfup.jpg');">
+        <div class="container halloffame-container">
+            <h1>Hall of Fame</h1>
+            <h2>Cool People</h2>
+            <h3 class="famous-people">Mally, Anshinator, Couch, ExoFiex6</h3>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+        </div>
+    </div>
+
     <!-- Games Page -->
     <div class="page games" style="background-image: url('https://wallpapers.com/images/file/among-us-background-oax75cuqy7sjcfup.jpg');">
         <div class="container">
@@ -249,18 +283,12 @@
     <div class="page shoutouts" style="background-image: url('https://wallpapers.com/images/file/among-us-background-oax75cuqy7sjcfup.jpg');">
         <div class="container">
             <h1>SHOUTOUTS</h1>
-            <p>Shoutouts to the awesome community members!</p>
-            <P>Shoutout to Mally and ExoFiex for helping me code this website!</P>
-            <P>Tysm couch being the first person from another school to go on to this website</P>
-
             <div class="shoutouts">
                 <ul>
-                    <li>Shoutout to Player1 for an amazing win!</li>
-                    <li>Shoutout to Player2 for helping with the game!</li>
-                    <li>Shoutout to Player3 for being an awesome team member!</li>
+                    <P>Shoutout to Mally and ExoFiex for helping me code this website!</P>
+                    <P>Tysm Couch for being the first person from another school to visit the website.</P>
                 </ul>
             </div>
-
             <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
@@ -277,10 +305,4 @@
         }
 
         // Function to go back to homepage
-        function goBack() {
-            showPage('homepage');
-        }
-    </script>
-
-</body>
-</html>
+       
