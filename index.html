@@ -13,17 +13,6 @@
             color: white;
         }
 
-        /* Homepage & Hall of Fame Container */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 100vh;
-            color: white;
-        }
-
         /* Visitor Counter Box Styling */
         .visitor-count-box {
             position: fixed;
@@ -279,7 +268,40 @@
         function goBack() {
             showPage('homepage');
         }
+
+        // Simple Visitor Counter
+        let allTimeCount = localStorage.getItem('allTimeCount') || 0;
+        let weeklyCount = localStorage.getItem('weeklyCount') || 0;
+        const currentWeek = new Date().getWeek();
+
+        // Check if it's a new week and reset weekly counter if needed
+        let lastWeek = localStorage.getItem('lastVisitWeek') || 0;
+        if (lastWeek !== currentWeek) {
+            weeklyCount = 0;
+        }
+
+        // Increase counts
+        allTimeCount++;
+        weeklyCount++;
+
+        // Store updated values
+        localStorage.setItem('allTimeCount', allTimeCount);
+        localStorage.setItem('weeklyCount', weeklyCount);
+        localStorage.setItem('lastVisitWeek', currentWeek);
+
+        // Update the UI with visitor counts
+        document.getElementById('allTimeCount').innerText = allTimeCount;
+        document.getElementById('weeklyCount').innerText = weeklyCount;
+
+        // Adding getWeek function for week calculation
+        Date.prototype.getWeek = function() {
+            const date = new Date(this.getFullYear(), this.getMonth(), this.getDate());
+            const firstDate = new Date(date.getFullYear(), 0, 1);
+            const days = Math.floor((date - firstDate) / (24 * 60 * 60 * 1000));
+            return Math.ceil((days + 1) / 7);
+        }
     </script>
 
 </body>
 </html>
+
