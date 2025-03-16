@@ -24,16 +24,15 @@
             color: white;
         }
 
-        /* Homepage Background Image Section */
-        .homepage-background {
+        /* Homepage Background Image */
+        .homepage-background img {
             width: 100%;
             height: 100vh;
-            background-size: cover;
-            background-position: center;
+            object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
+            z-index: -1; /* Make sure the image stays behind content */
         }
 
         /* Visitor Counter Box Styling */
@@ -209,11 +208,13 @@
         </div>
     </div>
 
-    <!-- Background Image Section for Homepage -->
-    <div class="homepage-background" style="background-image: url('your-image-path.jpg');"></div>
+    <!-- Homepage Background Image -->
+    <div class="homepage-background">
+        <img src="your-image-path.jpg" alt="Homepage Background">
+    </div>
 
     <!-- Games Page -->
-    <div class="page games" style="background-image: url('your-background-image.jpg');">
+    <div class="page games">
         <div class="container">
             <div class="search-container">
                 <input type="text" id="searchGames" placeholder="Search Games..." onkeyup="filterGames()">
