@@ -11,6 +11,11 @@
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
 
         /* Visitor Counter Box Styling */
@@ -28,43 +33,14 @@
             width: 200px;
         }
 
-        .visitor-count-box h3 {
-            margin: 10px 0;
+        /* Container Styling */
+        .container {
+            text-align: center; /* Centers the content horizontally */
+            max-width: 100%;
+            margin: 0 auto;
         }
 
-        .page {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100vh;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-
-        .active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* Other Page Styling */
-        h1 {
-            font-size: 4rem;
-            margin: 0;
-            padding: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            color: #fff;
-            cursor: pointer; /* Make it clickable */
-        }
-
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5);
-            color: #ddd;
-        }
-
+        /* Buttons Styling */
         .button {
             background-color: #444444;
             padding: 15px 30px;
@@ -75,63 +51,44 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
             margin: 10px;
-            display: block; /* Ensures buttons are stacked vertically */
+            display: inline-block; /* Makes the buttons inline and not block level */
+            width: auto;
         }
 
         .button:hover {
             background-color: #666666;
         }
 
-        /* Games Container Styling */
-        .games-container {
+        /* Specific Styling for "Back to Home" Buttons */
+        .back-to-home {
+            width: 250px;
+            padding: 20px 40px;
+            font-size: 1.4rem; /* Slightly larger text size */
+            margin-top: 20px; /* Add spacing above the button */
+        }
+
+        /* Page Styling (including Back to Home buttons) */
+        .page {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            flex-wrap: wrap;  /* Allow wrapping to the next line if the screen is small */
+            align-items: center;
         }
 
-        /* Game Box Styling */
-        .game {
-            background-color: #444;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            width: 200px;
-            height: 250px;
-            text-align: center;
-            transition: transform 0.3s ease;
-            overflow: hidden; /* Ensures the image doesn't overflow the container */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+        /* Active Page */
+        .active {
+            display: block;
+            opacity: 1;
         }
 
-        .game:hover {
-            transform: scale(1.05);
-        }
-
-        .game img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the image fills the entire box */
-            border-radius: 10px;
-            margin-bottom: 10px; /* Adds space between image and text */
-        }
-
-        .game h2 {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: white;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Link Styling */
-        .game a {
-            text-decoration: none;
-        }
-
-        /* Records Section Styling */
+        /* Record Section Styling */
         .record-boxes {
             display: flex;
             gap: 20px;
@@ -149,22 +106,11 @@
             overflow-y: auto;
         }
 
-        .record-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .record-box textarea {
-            width: 100%;
-            height: 100%;
-            background-color: #333;
-            border: none;
+        /* General Text Styling */
+        h1, p {
+            font-size: 2rem;
             color: white;
-            padding: 10px;
-            font-size: 1rem;
-            border-radius: 5px;
-            resize: none;
-            outline: none;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
         }
     </style>
 </head>
@@ -196,7 +142,7 @@
             <h1>Hall of Fame</h1>
             <h2>Cool People</h2>
             <p style="font-size: 2rem;">Mally, Anshinator, Couch, ExoFiex6</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -240,7 +186,7 @@
                 </div>
             </div>
 
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -250,7 +196,7 @@
             <h1>SHOUTOUTS</h1>
             <p>Shoutout to Mally and ExoFiex for helping me code this website!</p>
             <p>Tysm couch being the first person from another school to go on to this website</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
@@ -286,22 +232,3 @@
         weeklyCount++;
 
         // Store updated values
-        localStorage.setItem('allTimeCount', allTimeCount);
-        localStorage.setItem('weeklyCount', weeklyCount);
-        localStorage.setItem('lastVisitWeek', currentWeek);
-
-        // Update the UI with visitor counts
-        document.getElementById('allTimeCount').innerText = allTimeCount;
-        document.getElementById('weeklyCount').innerText = weeklyCount;
-
-        // Adding getWeek function for week calculation
-        Date.prototype.getWeek = function() {
-            const date = new Date(this.getFullYear(), this.getMonth(), this.getDate());
-            const firstDate = new Date(date.getFullYear(), 0, 1);
-            const days = Math.floor((date - firstDate) / (24 * 60 * 60 * 1000));
-            return Math.ceil((days + 1) / 7);
-        }
-    </script>
-
-</body>
-</html>
