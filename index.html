@@ -11,12 +11,17 @@
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
             color: white;
+        }
+
+        /* Homepage & Hall of Fame Container */
+        .container {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             flex-direction: column;
-            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: white;
         }
 
         /* Visitor Counter Box Styling */
@@ -34,14 +39,47 @@
             width: 200px;
         }
 
-        /* Container Styling */
-        .container {
-            text-align: center; /* Centers the content horizontally */
-            max-width: 100%;
-            margin: 0 auto;
+        .visitor-count-box h3 {
+            margin: 10px 0;
         }
 
-        /* Buttons Styling */
+        /* Page styling */
+        .page {
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            padding: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            color: #fff;
+            cursor: pointer; /* Make it clickable */
+            text-align: center; /* Center title */
+        }
+
+        /* Button Styling */
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Space between buttons */
+            align-items: center; /* Center buttons horizontally */
+            justify-content: center; /* Vertically center buttons */
+        }
+
         .button {
             background-color: #444444;
             padding: 15px 30px;
@@ -52,48 +90,95 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
             margin: 10px;
-            display: inline-block; /* Makes the buttons inline and not block level */
-            width: auto;
         }
 
         .button:hover {
             background-color: #666666;
         }
 
-        /* Specific Styling for "Back to Home" Buttons */
-        .back-to-home {
-            width: 250px;
-            padding: 20px 40px;
-            font-size: 1.4rem; /* Slightly larger text size */
-            margin-top: 20px; /* Add spacing above the button */
-        }
-
-        /* Page Styling (including Back to Home buttons) */
-        .page {
-            background-size: cover;
-            background-position: center;
-            width: 100%;
-            height: 100vh;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            background-color: rgba(0, 0, 0, 0.7);
+        /* Games Container Styling */
+        .games-container {
             display: flex;
             justify-content: center;
-            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;  /* Allow wrapping to the next line if the screen is small */
         }
 
-        /* Active Page */
-        .active {
-            display: block;
-            opacity: 1;
+        /* Game Box Styling */
+        .game {
+            background-color: #444;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 200px;
+            height: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            overflow: hidden; /* Ensures the image doesn't overflow the container */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
-        /* General Text Styling */
-        h1, p {
-            font-size: 2rem;
+        .game:hover {
+            transform: scale(1.05);
+        }
+
+        .game img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the entire box */
+            border-radius: 10px;
+            margin-bottom: 10px; /* Adds space between image and text */
+        }
+
+        .game h2 {
+            font-size: 1.2rem;
+            margin-top: 10px;
             color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Link Styling */
+        .game a {
+            text-decoration: none;
+        }
+
+        /* Records Section Styling */
+        .record-boxes {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .record-box {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            height: 200px;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        .record-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .record-box textarea {
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            resize: none;
+            outline: none;
         }
     </style>
 </head>
@@ -107,44 +192,17 @@
     </div>
 
     <!-- Homepage Content -->
-    <div class="page homepage active" style="background-color: #333;">
+    <div class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
-            <h1 onclick="setAboutBlank()">Ary Sus Gaming</h1> <!-- Title clickable -->
+            <h1>Ary Sus Gaming</h1> <!-- Title -->
             <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
-            <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
-            <a href="#" class="button" onclick="showPage('games')">Games</a>
-            <a href="#" class="button" onclick="showPage('records')">My Records</a>
-            <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
-            <a href="chat.html" class="button">Chat</a> <!-- Chat Button -->
-        </div>
-    </div>
-
-    <!-- Hall of Fame Page -->
-    <div class="page halloffame" style="background-color: #333;">
-        <div class="container">
-            <h1>Hall of Fame</h1>
-            <h2>Cool People</h2>
-            <p style="font-size: 2rem;"><a href="https://msg1.pages.dev/">Mally,</a> Anshinator, Couch, ExoFiex6</p>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Games Page -->
-    <div class="page games" style="background-color: #333;">
-        <div class="container">
-            <h1>GAMES</h1>
-            <p>Check out our featured games!</p>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Shoutouts Page -->
-    <div class="page shoutouts" style="background-color: #333;">
-        <div class="container">
-            <h1>SHOUTOUTS</h1>
-            <p>Shoutout to <a href="https://msg1.pages.dev">Mally</a> and ExoFiex for helping me code this website!</p>
-            <p>Tysm couch being the first person from another school to go on to this website</p>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
+            <div class="button-container">
+                <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
+                <a href="#" class="button" onclick="showPage('games')">Games</a>
+                <a href="#" class="button" onclick="showPage('records')">My Records</a>
+                <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
+                <a href="chat.html" class="button">Chat</a>
+            </div>
         </div>
     </div>
 
@@ -157,43 +215,6 @@
             });
 
             document.querySelector('.' + page).classList.add('active');  // Show selected page
-        }
-
-        // Function to go back to homepage
-        function goBack() {
-            showPage('homepage');
-        }
-
-        // Simple Visitor Counter
-        let allTimeCount = localStorage.getItem('allTimeCount') || 0;
-        let weeklyCount = localStorage.getItem('weeklyCount') || 0;
-        const currentWeek = new Date().getWeek();
-
-        // Check if it's a new week and reset weekly counter if needed
-        let lastWeek = localStorage.getItem('lastVisitWeek') || 0;
-        if (lastWeek !== currentWeek) {
-            weeklyCount = 0;
-        }
-
-        // Increase counts
-        allTimeCount++;
-        weeklyCount++;
-
-        // Store updated values
-        localStorage.setItem('allTimeCount', allTimeCount);
-        localStorage.setItem('weeklyCount', weeklyCount);
-        localStorage.setItem('lastVisitWeek', currentWeek);
-
-        // Update the UI with visitor counts
-        document.getElementById('allTimeCount').innerText = allTimeCount;
-        document.getElementById('weeklyCount').innerText = weeklyCount;
-
-        // Adding getWeek function for week calculation
-        Date.prototype.getWeek = function() {
-            const date = new Date(this.getFullYear(), this.getMonth(), this.getDate());
-            const firstDate = new Date(date.getFullYear(), 0, 1);
-            const days = Math.floor((date - firstDate) / (24 * 60 * 60 * 1000));
-            return Math.ceil((days + 1) / 7);
         }
     </script>
 
