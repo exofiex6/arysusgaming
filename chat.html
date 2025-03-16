@@ -59,7 +59,7 @@
             opacity: 1;
         }
 
-        /* Other Page Styling */
+        /* Title Styling */
         h1 {
             font-size: 4rem;
             margin: 0;
@@ -76,6 +76,7 @@
             color: #ddd;
         }
 
+        /* Button Styling */
         .button {
             background-color: #444444;
             padding: 15px 30px;
@@ -90,6 +91,14 @@
 
         .button:hover {
             background-color: #666666;
+        }
+
+        /* Buttons stacked vertically */
+        .button-container {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Space between buttons */
+            align-items: center; /* Center buttons horizontally */
         }
 
         /* Games Container Styling */
@@ -192,11 +201,13 @@
         <div class="container">
             <h1 onclick="setAboutBlank()">Ary Sus Gaming</h1> <!-- Title clickable -->
             <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
-            <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
-            <a href="#" class="button" onclick="showPage('games')">Games</a>
-            <a href="#" class="button" onclick="showPage('records')">My Records</a>
-            <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
-            <a href="chat.html" class="button">Chat</a>
+            <div class="button-container">
+                <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
+                <a href="#" class="button" onclick="showPage('games')">Games</a>
+                <a href="#" class="button" onclick="showPage('records')">My Records</a>
+                <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
+                <a href="chat.html" class="button">Chat</a>
+            </div>
         </div>
     </div>
 
@@ -206,8 +217,8 @@
             <h1>Hall of Fame</h1>
             <h2>Cool People</h2>
             <p style="font-size: 2rem;"><a href="https://msg1.pages.dev/">Mally,</a> Boey, Anshinator, Couch, ExoFiex6</p>
-            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT ( Boey ) on youtube!/p>
-            <p style="font-size: 2rem;">Btw suggest me games on my outlook if you want to be on the hall of fame ;) /p>
+            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT ( Boey ) on youtube!</p>
+            <p style="font-size: 2rem;">Btw suggest me games on my outlook if you want to be on the hall of fame ;) </p>
             <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
@@ -286,4 +297,3 @@
 
 </body>
 </html>
-
