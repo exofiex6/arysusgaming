@@ -104,7 +104,7 @@
         /* Game Box Styling */
         .game {
             background-color: #444;
-            padding: 20px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             width: 200px;
@@ -112,6 +112,9 @@
             text-align: center;
             transition: transform 0.3s ease;
             overflow: hidden; /* Ensures the image doesn't overflow the container */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
         .game:hover {
@@ -123,6 +126,7 @@
             height: 100%;
             object-fit: cover; /* Ensures the image fills the entire box */
             border-radius: 10px;
+            margin-bottom: 10px; /* Adds space between image and text */
         }
 
         .game h2 {
@@ -206,33 +210,33 @@
             <div class="games-container">
                 <!-- Game 1 -->
                 <div class="game">
+                    <h2>msg</h2> <!-- Text above the image -->
                     <a href="https://www.example1.com" target="_blank">
                         <img src="https://www.example1-image.com/game1.jpg" alt="Game 1">
-                        <h2>Game 1</h2>
                     </a>
                 </div>
 
                 <!-- Game 2 -->
                 <div class="game">
+                    <h2>msg</h2> <!-- Text above the image -->
                     <a href="https://www.example2.com" target="_blank">
                         <img src="https://www.example2-image.com/game2.jpg" alt="Game 2">
-                        <h2>Game 2</h2>
                     </a>
                 </div>
 
                 <!-- Game 3 -->
                 <div class="game">
+                    <h2>msg</h2> <!-- Text above the image -->
                     <a href="https://www.example3.com" target="_blank">
                         <img src="https://www.example3-image.com/game3.jpg" alt="Game 3">
-                        <h2>Game 3</h2>
                     </a>
                 </div>
 
                 <!-- Game 4 -->
                 <div class="game">
+                    <h2>msg</h2> <!-- Text above the image -->
                     <a href="https://www.example4.com" target="_blank">
                         <img src="https://www.example4-image.com/game4.jpg" alt="Game 4">
-                        <h2>Game 4</h2>
                     </a>
                 </div>
             </div>
