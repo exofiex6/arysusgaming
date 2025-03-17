@@ -178,7 +178,7 @@
     </div>
 
     <!-- Homepage Content -->
-    <div class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="homepage" class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>Ary Sus Gaming</h1> <!-- Title -->
             <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
@@ -193,7 +193,7 @@
     </div>
 
     <!-- Records Page -->
-    <div class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="records" class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>Records</h1>
             <div class="record-message">
@@ -203,7 +203,7 @@
     </div>
 
     <!-- Games Page -->
-    <div class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="games" class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>GAMES</h1>
             <p>Check out our featured games!</p>
@@ -225,7 +225,7 @@
                     </a>
                 </div>
 
-                <!-- Game 3: Link to Game -->
+                <!-- Game 3: RSG -->
                 <div class="game">
                     <h2>Game 3 (Not Added Yet)</h2>
                     <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
@@ -233,7 +233,7 @@
                     </a>
                 </div>
 
-                <!-- Game 4: Link to Game -->
+                <!-- Game 4 -->
                 <div class="game">
                     <h2>Game 4 (Not Added Yet)</h2>
                     <a href="https://www.example4.com" target="_blank">
@@ -241,22 +241,55 @@
                     </a>
                 </div>
 
-                <!-- Game 5: Example Game -->
+                <!-- Additional Rows of Games -->
                 <div class="game">
                     <h2>Game 5 (Not Added Yet)</h2>
                     <a href="https://www.example5.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.example.jpg" alt="Game 5">
+                        <img src="https://placekitten.com/200/200" alt="Game 5">
                     </a>
                 </div>
 
-                <!-- Game 6: Example Game -->
                 <div class="game">
                     <h2>Game 6 (Not Added Yet)</h2>
                     <a href="https://www.example6.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.example2.jpg" alt="Game 6">
+                        <img src="https://placekitten.com/200/200" alt="Game 6">
                     </a>
                 </div>
 
-                <!-- Game 7: Example Game -->
                 <div class="game">
-                    <h
+                    <h2>Game 7 (Not Added Yet)</h2>
+                    <a href="https://www.example7.com" target="_blank">
+                        <img src="https://placekitten.com/200/200" alt="Game 7">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Back to Home Button Below Games -->
+            <div class="back-to-home">
+                <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show a specific page by hiding all others
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+        }
+
+        // Function to go back to the homepage
+        function goBack() {
+            showPage('homepage');
+        }
+    </script>
+
+</body>
+</html>
