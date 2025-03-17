@@ -67,17 +67,16 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
-            cursor: pointer; /* Make it clickable */
-            text-align: center; /* Center title */
+            cursor: pointer;
         }
 
         /* Button Styling */
         .button-container {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 15px; /* Space between buttons */
-            align-items: center; /* Center buttons horizontally */
-            justify-content: center; /* Vertically center buttons */
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
         }
 
         .button {
@@ -102,7 +101,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
-            flex-wrap: wrap;  /* Allow wrapping to the next line if the screen is small */
+            flex-wrap: wrap;
         }
 
         /* Game Box Styling */
@@ -115,7 +114,7 @@
             height: 250px;
             text-align: center;
             transition: transform 0.3s ease;
-            overflow: hidden; /* Ensures the image doesn't overflow the container */
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -128,9 +127,9 @@
         .game img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image fills the entire box */
+            object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 10px; /* Adds space between image and text */
+            margin-bottom: 10px;
         }
 
         .game h2 {
@@ -145,34 +144,14 @@
             text-decoration: none;
         }
 
-        /* Records Section Styling */
-        .record-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            height: 100vh;
-            padding: 20px;
-        }
-
-        .record-container h1 {
-            font-size: 3rem;
-        }
-
-        .record-container p {
-            font-size: 2rem;
-        }
-
         /* Hall of Fame & Shoutouts Section Styling */
-        .halloffame-container, .shoutouts-container {
+        .halloffame-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 20px;
         }
-
     </style>
 </head>
 <body>
@@ -226,24 +205,58 @@
                     </a>
                 </div>
 
-                <!-- Game 2: Not added yet -->
+                <!-- Game 2: Embed Game via iframe -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
-                    <a href="https://www.example2.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game2.jpg" alt="Game 2">
-                    </a>
+                    <h2>Game 2</h2>
+                    <iframe src="https://www.example2.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
                 </div>
 
-                <!-- Game 3: Not added yet -->
+                <!-- Game 3: Embed Game via iframe -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
-                    <a href="https://www.example3.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game3.jpg" alt="Game 3">
-                    </a>
+                    <h2>Game 3</h2>
+                    <iframe src="https://www.example3.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
                 </div>
 
-                <!-- Game 4: Not added yet -->
+                <!-- Game 4: Embed Game via iframe -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
-                    <a href="https://www.example4.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP
+                    <h2>Game 4</h2>
+                    <iframe src="https://www.example4.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
+                </div>
+            </div>
+
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        function showPage(page) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Show the selected page
+            const selectedPage = document.querySelector(`.${page}`);
+            selectedPage.classList.add('active');
+        }
+
+        // Back button function
+        function goBack() {
+            showPage('homepage');
+        }
+
+        // Add the visitor count functionality
+        let allTimeCount = localStorage.getItem('allTimeCount') || 0;
+        let weeklyCount = localStorage.getItem('weeklyCount') || 0;
+
+        document.getElementById('allTimeCount').textContent = allTimeCount;
+        document.getElementById('weeklyCount').textContent = weeklyCount;
+
+        // Increment counts on page load
+        allTimeCount++;
+        weeklyCount++;
+
+        localStorage.setItem('allTimeCount', allTimeCount);
+        localStorage.setItem('weeklyCount', weeklyCount);
+    </script>
+</body>
+</html>
