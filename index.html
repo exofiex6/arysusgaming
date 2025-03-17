@@ -42,6 +42,10 @@
             opacity: 0;
             transition: opacity 0.5s ease;
             background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .active {
@@ -57,6 +61,12 @@
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
             cursor: pointer;
+        }
+
+        /* Description Styling */
+        p {
+            font-size: 1.2rem;
+            margin-top: 20px;
         }
 
         /* Button Styling */
@@ -204,7 +214,7 @@
 
                 <!-- Game 3: Link to Game -->
                 <div class="game">
-                    <h2>Game 3 (Not Added Yet)</h2>
+                    <h2>RSG</h2>
                     <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
                         <img src="https://thehackerboi123.github.io/cwasontgeemes/imgs/RSG.png" alt="Game 3">
                     </a>
@@ -234,48 +244,6 @@
         function goBack() {
             showPage('homepage');
         }
-
-        // Visitor count functionality
-        function updateVisitorCount() {
-            let allTimeCount = localStorage.getItem('allTimeCount') || 0;
-            let weeklyCount = localStorage.getItem('weeklyCount') || 0;
-            let lastVisit = localStorage.getItem('lastVisit');
-
-            // Get current date and week number
-            const currentDate = new Date();
-            const currentWeek = getWeekNumber(currentDate);
-
-            // Check if the user has visited this week already
-            const lastVisitDate = new Date(lastVisit);
-            const lastVisitWeek = getWeekNumber(lastVisitDate);
-
-            // Check if the current week is different from the last visit week
-            if (currentWeek !== lastVisitWeek) {
-                weeklyCount = 1; // Reset weekly count to 1 for new week
-            } else if (!lastVisit || currentWeek === lastVisitWeek) {
-                weeklyCount++; // Increment weekly count if it's the same week
-            }
-
-            // Increment all-time count only once per user
-            allTimeCount++;
-
-            // Store updated counts and visit date
-            localStorage.setItem('allTimeCount', allTimeCount);
-            localStorage.setItem('weeklyCount', weeklyCount);
-            localStorage.setItem('lastVisit', currentDate.toISOString());
-
-            // Update the counter display
-            document.getElementById('allTimeCount').textContent = allTimeCount;
-            document.getElementById('weeklyCount').textContent = weeklyCount;
-        }
-
-        function getWeekNumber(date) {
-            const startDate = new Date(date.getFullYear(), 0, 1);
-            const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
-            return Math.ceil((days + 1) / 7);
-        }
-
-        updateVisitorCount();
     </script>
 
 </body>
