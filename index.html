@@ -261,4 +261,22 @@
 
             // Store updated counts and visit date
             localStorage.setItem('allTimeCount', allTimeCount);
-            localStorage.set
+            localStorage.setItem('weeklyCount', weeklyCount);
+            localStorage.setItem('lastVisit', currentDate.toISOString());
+
+            // Update the counter display
+            document.getElementById('allTimeCount').textContent = allTimeCount;
+            document.getElementById('weeklyCount').textContent = weeklyCount;
+        }
+
+        function getWeekNumber(date) {
+            const startDate = new Date(date.getFullYear(), 0, 1);
+            const days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+            return Math.ceil((days + 1) / 7);
+        }
+
+        updateVisitorCount();
+    </script>
+
+</body>
+</html>
