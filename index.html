@@ -185,7 +185,7 @@
     </div>
 
     <!-- Homepage Content -->
-    <div class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="homepage" class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>Ary Sus Gaming</h1> <!-- Title -->
             <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
@@ -200,7 +200,7 @@
     </div>
 
     <!-- Hall of Fame Page -->
-    <div class="page halloffame" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="halloffame" class="page halloffame">
         <div class="halloffame-container">
             <h1>Hall of Fame</h1>
             <h2>Cool People</h2>
@@ -212,7 +212,7 @@
     </div>
 
     <!-- Games Page -->
-    <div class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="games" class="page games">
         <div class="container">
             <h1>GAMES</h1>
             <p>Check out our featured games!</p>
@@ -256,7 +256,7 @@
     </div>
 
     <!-- Records Page -->
-    <div class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div id="records" class="page records">
         <div class="record-container">
             <h1>Records</h1>
             <p>Speedster beat Appel Level One in 17.9 seconds</p>
@@ -266,10 +266,21 @@
     </div>
 
     <script>
-        function showPage(page) {
+        function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
 
             // Show the clicked page
-           
+            const page = document.getElementById(pageId);
+            page.classList.add('active');
+        }
+
+        function goBack() {
+            // Go back to the homepage
+            showPage('homepage');
+        }
+    </script>
+
+</body>
+</html>
