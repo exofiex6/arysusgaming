@@ -11,8 +11,36 @@
             font-family: Arial, sans-serif;
             background-color: #1a1a1a;
             color: white;
-            overflow-x: hidden;
-            position: relative;
+        }
+
+        /* Homepage & Hall of Fame Container */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            color: white;
+        }
+
+        /* Visitor Counter Box Styling */
+        .visitor-count-box {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            text-align: center;
+            width: 200px;
+        }
+
+        .visitor-count-box h3 {
+            margin: 10px 0;
         }
 
         /* Page styling */
@@ -20,10 +48,11 @@
             background-size: cover;
             background-position: center;
             width: 100%;
-            height: 100vh; /* Ensure full height of viewport */
+            height: 100vh;
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
+            background-color: rgba(0, 0, 0, 0.7);
         }
 
         .active {
@@ -38,24 +67,17 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        /* Description Styling */
-        p {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            text-align: center;
+            cursor: pointer; /* Make it clickable */
+            text-align: center; /* Center title */
         }
 
         /* Button Styling */
         .button-container {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column; /* Stack buttons vertically */
+            gap: 15px; /* Space between buttons */
+            align-items: center; /* Center buttons horizontally */
+            justify-content: center; /* Vertically center buttons */
         }
 
         .button {
@@ -77,24 +99,23 @@
         /* Games Container Styling */
         .games-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             padding: 20px;
-            margin-top: 20px;
+            flex-wrap: wrap;  /* Allow wrapping to the next line if the screen is small */
         }
 
         /* Game Box Styling */
         .game {
             background-color: #444;
-            padding: 20px;
+            padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            height: 250px;
             width: 200px;
+            height: 250px;
             text-align: center;
             transition: transform 0.3s ease;
-            overflow: hidden;
+            overflow: hidden; /* Ensures the image doesn't overflow the container */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -106,10 +127,10 @@
 
         .game img {
             width: 100%;
-            height: 150px;
-            object-fit: cover;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the entire box */
             border-radius: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 10px; /* Adds space between image and text */
         }
 
         .game h2 {
@@ -124,82 +145,54 @@
             text-decoration: none;
         }
 
-        /* Back to Home Button Below Games */
-        .back-to-home {
-            display: block;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        /* Hall of Fame Section Styling */
-        .halloffame-container {
-            text-align: center;
+        /* Records Section Styling */
+        .record-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            height: 100vh;
             padding: 20px;
-            background-size: cover;
-            background-position: center;
         }
 
-        .halloffame-container h1 {
+        .record-container h1 {
             font-size: 3rem;
-            margin-bottom: 20px;
         }
 
-        .halloffame-container h2 {
+        .record-container p {
             font-size: 2rem;
         }
 
-        .halloffame-container p {
-            font-size: 1.5rem;
+        /* Hall of Fame & Shoutouts Section Styling */
+        .halloffame-container, .shoutouts-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
         }
 
-        /* Shoutouts Section Styling */
-        .shoutouts-container {
-            text-align: center;
-            padding: 20px;
-            background-size: cover;
-            background-position: center;
-        }
-
-        .shoutouts-container h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .shoutouts-container p {
-            font-size: 1.5rem;
-        }
-
-        /* New left side message styling */
-        #remove-history-message {
-            position: fixed;
-            top: 20%;
-            left: 0;
-            font-size: 1.2rem;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 10px;
-            border-radius: 5px;
-            transform: rotate(-90deg);
-            transform-origin: left top;
-        }
     </style>
 </head>
 <body>
 
-    <!-- Message on the left side to prompt user -->
-    <div id="remove-history-message">
-        Click anywhere to remove this site from your history
+    <!-- Visitor Counter Box (Visible only on Homepage) -->
+    <div id="visitorCountBox" class="visitor-count-box">
+        <h3>Visitor Count</h3>
+        <p><strong>All-Time Visits:</strong> <span id="allTimeCount">0</span></p>
+        <p><strong>This Week's Visits:</strong> <span id="weeklyCount">0</span></p>
     </div>
 
     <!-- Homepage Content -->
-    <div id="homepage" class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>Ary Sus Gaming</h1> <!-- Title -->
             <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
             <div class="button-container">
                 <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
                 <a href="#" class="button" onclick="showPage('games')">Games</a>
-                <a href="#" class="button" onclick="showPage('records')">Records</a>
+                <a href="#" class="button" onclick="showPage('records')">Records</a> <!-- Renamed from My Records -->
                 <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
                 <a href="chat.html" class="button">Chat</a>
             </div>
@@ -207,47 +200,25 @@
     </div>
 
     <!-- Hall of Fame Page -->
-    <div id="halloffame" class="page halloffame" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div class="page halloffame" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="halloffame-container">
             <h1>Hall of Fame</h1>
             <h2>Cool People</h2>
-            <p style="font-size: 2rem;">Mally, Boey, Anshinator, Couch, ExoFiex6</p>
-            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT (Boey) on youtube!</p>
-            <p style="font-size: 2rem;">Suggest me games on my outlook if you want to be in the Hall of Fame ;) </p>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Shoutouts Page -->
-    <div id="shoutouts" class="page shoutouts" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
-        <div class="shoutouts-container">
-            <h1>Shoutouts</h1>
-            <p style="font-size: 2rem;">Big thanks to all who have supported Ary Sus Gaming!</p>
-            <p style="font-size: 2rem;">Special shoutout to: Mally, Boey, Anshinator, Couch, ExoFiex6!</p>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Records Page -->
-    <div id="records" class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
-        <div class="container">
-            <h1>Records</h1>
-            <div class="record-message">
-                Beat Appel level one in 18.9 seconds on MSG - Speedster
-            </div>
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
+            <p style="font-size: 2rem;"><a href="https://msg1.pages.dev/">Mally,</a> Boey, Anshinator, Couch, ExoFiex6</p>
+            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT ( Boey ) on youtube!</p>
+            <p style="font-size: 2rem;">Btw suggest me games on my outlook if you want to be on the hall of fame ;) </p>
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
     <!-- Games Page -->
-    <div id="games" class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+    <div class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
             <h1>GAMES</h1>
             <p>Check out our featured games!</p>
 
-            <!-- Two Rows of Games -->
             <div class="games-container">
-                <!-- Row 1 -->
+                <!-- Game 1: MSG -->
                 <div class="game">
                     <h2>MSG (Click Image)</h2>
                     <a href="https://msg1.pages.dev" target="_blank">
@@ -255,60 +226,24 @@
                     </a>
                 </div>
 
+                <!-- Game 2: Not added yet -->
                 <div class="game">
-                    <h2>Snow Rider</h2>
-                    <a href="https://snowrider3d.net/" target="_blank">
-                        <img src="https://snowrider3d.net/wp-content/uploads/2024/10/snow-rider-3d-m200x200.webp" alt="Snow Rider">
+                    <h2>Not added yet..</h2>
+                    <a href="https://www.example2.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game2.jpg" alt="Game 2">
                     </a>
                 </div>
 
+                <!-- Game 3: Not added yet -->
                 <div class="game">
-                    <h2>Game 3</h2>
-                    <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
-                        <img src="https://thehackerboi123.github.io/cwasontgeemes/" alt="Game 3">
+                    <h2>Not added yet..</h2>
+                    <a href="https://www.example3.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game3.jpg" alt="Game 3">
                     </a>
                 </div>
 
-                <!-- Row 2 (Second Row of Games) -->
+                <!-- Game 4: Not added yet -->
                 <div class="game">
-                    <h2>Game 4</h2>
-                    <a href="#" target="_blank">
-                        <img src="https://via.placeholder.com/200x150" alt="Game 4">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 5</h2>
-                    <a href="#" target="_blank">
-                        <img src="https://via.placeholder.com/200x150" alt="Game 5">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 6</h2>
-                    <a href="#" target="_blank">
-                        <img src="https://via.placeholder.com/200x150" alt="Game 6">
-                    </a>
-                </div>
-            </div>
-
-            <!-- Back to Home Button Below Games -->
-            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript functions for page navigation
-        function showPage(pageId) {
-            // Hide all pages
-            let pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            // Show the selected page
-            let page = document.getElementById(pageId);
-            page.classList.add('active');
-        }
-
-        function goBack() {
-            showPage('homepage
+                    <h2>Not added yet..</h2>
+                    <a href="https://www.example4.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP
