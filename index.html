@@ -99,10 +99,10 @@
         /* Games Container Styling */
         .games-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 0px;  /* No gap between games in the same row */
             padding: 20px;
-            flex-wrap: wrap;  /* Allow wrapping to the next line if the screen is small */
         }
 
         /* Game Box Styling */
@@ -116,9 +116,7 @@
             text-align: center;
             transition: transform 0.3s ease;
             overflow: hidden; /* Ensures the image doesn't overflow the container */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
+            margin-bottom: 20px; /* Adds space between rows */
         }
 
         .game:hover {
@@ -218,7 +216,7 @@
             <p>Check out our featured games!</p>
 
             <div class="games-container">
-                <!-- Game 1: MSG -->
+                <!-- Row 1 -->
                 <div class="game">
                     <h2>MSG (Click Image)</h2>
                     <a href="https://msg1.pages.dev" target="_blank">
@@ -226,61 +224,41 @@
                     </a>
                 </div>
 
-                <!-- Game 2: Not added yet -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
+                    <h2>Game 2</h2>
                     <a href="https://www.example2.com" target="_blank">
                         <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game2.jpg" alt="Game 2">
                     </a>
                 </div>
 
-                <!-- Game 3: Not added yet -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
+                    <h2>Game 3</h2>
                     <a href="https://www.example3.com" target="_blank">
                         <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game3.jpg" alt="Game 3">
                     </a>
                 </div>
 
-                <!-- Game 4: Not added yet -->
+                <!-- Row 2 -->
                 <div class="game">
-                    <h2>Not added yet..</h2>
+                    <h2>Game 4</h2>
                     <a href="https://www.example4.com" target="_blank">
                         <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game4.jpg" alt="Game 4">
                     </a>
                 </div>
+
+                <div class="game">
+                    <h2>Game 5</h2>
+                    <a href="https://www.example5.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game5.jpg" alt="Game 5">
+                    </a>
+                </div>
+
+                <div class="game">
+                    <h2>Game 6</h2>
+                    <a href="https://www.example6.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game6.jpg" alt="Game 6">
+                    </a>
+                </div>
             </div>
 
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Records Page -->
-    <div id="records" class="page records">
-        <div class="record-container">
-            <h1>Records</h1>
-            <p>Speedster beat Appel Level One in 17.9 seconds</p>
-            <p>Parthyboi beat all the Space Huggers levels under 13 minutes</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <script>
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-
-            // Show the clicked page
-            const page = document.getElementById(pageId);
-            page.classList.add('active');
-        }
-
-        function goBack() {
-            // Go back to the homepage
-            showPage('homepage');
-        }
-    </script>
-
-</body>
-</html>
+            <a href="#" class
