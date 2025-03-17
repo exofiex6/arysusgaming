@@ -12,6 +12,7 @@
             background-color: #1a1a1a;
             color: white;
             overflow-x: hidden;
+            position: relative;
         }
 
         /* Page styling */
@@ -167,9 +168,28 @@
         .shoutouts-container p {
             font-size: 1.5rem;
         }
+
+        /* New left side message styling */
+        #remove-history-message {
+            position: fixed;
+            top: 20%;
+            left: 0;
+            font-size: 1.2rem;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 5px;
+            transform: rotate(-90deg);
+            transform-origin: left top;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Message on the left side to prompt user -->
+    <div id="remove-history-message">
+        Click anywhere to remove this site from your history
+    </div>
 
     <!-- Homepage Content -->
     <div id="homepage" class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
@@ -245,10 +265,50 @@
                 <div class="game">
                     <h2>Game 3</h2>
                     <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
-                        <img src="https://thehackerboi123.github.io/cwasontgeemes/imgs/RSG.png" alt="Game 3">
+                        <img src="https://thehackerboi123.github.io/cwasontgeemes/" alt="Game 3">
+                    </a>
+                </div>
+
+                <!-- Row 2 (Second Row of Games) -->
+                <div class="game">
+                    <h2>Game 4</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200x150" alt="Game 4">
+                    </a>
+                </div>
+
+                <div class="game">
+                    <h2>Game 5</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200x150" alt="Game 5">
+                    </a>
+                </div>
+
+                <div class="game">
+                    <h2>Game 6</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200x150" alt="Game 6">
                     </a>
                 </div>
             </div>
 
-            <div class="games-container">
-                <!-- Row 2 
+            <!-- Back to Home Button Below Games -->
+            <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript functions for page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            let pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show the selected page
+            let page = document.getElementById(pageId);
+            page.classList.add('active');
+        }
+
+        function goBack() {
+            showPage('homepage
