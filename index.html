@@ -94,11 +94,10 @@
 
         /* Games Container Styling */
         .games-container {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 boxes per row */
             gap: 20px;
             padding: 20px;
-            flex-wrap: wrap;
             text-align: center;
         }
 
@@ -108,7 +107,6 @@
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            width: 200px;
             height: 250px;
             text-align: center;
             transition: transform 0.3s ease;
@@ -150,6 +148,13 @@
             justify-content: center;
             gap: 20px;
         }
+
+        /* Back to Home Button Below Games */
+        .back-to-home {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -176,18 +181,6 @@
         </div>
     </div>
 
-    <!-- Hall of Fame Page -->
-    <div class="page halloffame" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
-        <div class="halloffame-container">
-            <h1>Hall of Fame</h1>
-            <h2>Cool People</h2>
-            <p style="font-size: 2rem;"><a href="https://msg1.pages.dev/">Mally,</a> Boey, Anshinator, Couch, ExoFiex6</p>
-            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT ( Boey ) on youtube!</p>
-            <p style="font-size: 2rem;">Btw suggest me games on my outlook if you want to be on the hall of fame ;) </p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
     <!-- Games Page -->
     <div class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
@@ -203,7 +196,7 @@
                     </a>
                 </div>
 
-                <!-- Game 2: Link to Game -->
+                <!-- Game 2: Snow Rider -->
                 <div class="game">
                     <h2>Snow Rider</h2>
                     <a href="https://snowrider3d.net/" target="_blank">
@@ -212,8 +205,8 @@
                 </div>
 
                 <!-- Game 3: Link to Game -->
-                <div class="RSG">
-                    <h2>Game 3 (Not Added Yet)</h2>
+                <div class="game">
+                    <h2>RSG</h2>
                     <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
                         <img src="https://thehackerboi123.github.io/cwasontgeemes/imgs/RSG.png" alt="Game 3">
                     </a>
@@ -226,9 +219,36 @@
                         <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game4.jpg" alt="Game 4">
                     </a>
                 </div>
+
+                <!-- Game 5 -->
+                <div class="game">
+                    <h2>Game 5 (Coming Soon)</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200" alt="Game 5">
+                    </a>
+                </div>
+
+                <!-- Game 6 -->
+                <div class="game">
+                    <h2>Game 6 (Coming Soon)</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200" alt="Game 6">
+                    </a>
+                </div>
+
+                <!-- Game 7 -->
+                <div class="game">
+                    <h2>Game 7 (Coming Soon)</h2>
+                    <a href="#" target="_blank">
+                        <img src="https://via.placeholder.com/200" alt="Game 7">
+                    </a>
+                </div>
             </div>
 
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            <!-- Back to Home Button Below Games -->
+            <div class="back-to-home">
+                <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            </div>
         </div>
     </div>
 
