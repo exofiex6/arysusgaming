@@ -1,2 +1,2 @@
 # arysusgaming
-asg1.pages.dev
+asg2.pages.dev
