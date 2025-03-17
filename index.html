@@ -42,7 +42,6 @@
             opacity: 0;
             transition: opacity 0.5s ease;
             background-color: rgba(0, 0, 0, 0.7);
-            display: block;
         }
 
         .active {
@@ -96,12 +95,12 @@
         /* Games Container Styling */
         .games-container {
             display: flex;
-            flex-wrap: wrap; /* Wrap games to the next row */
+            flex-wrap: wrap;
             justify-content: center;
             gap: 0; /* No gap between boxes */
             padding: 20px;
             text-align: center;
-            width: 100%; /* Ensure the games take up full width */
+            width: 100%;
         }
 
         /* Game Box Styling */
@@ -110,15 +109,15 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            height: 250px; /* Set fixed height for uniform size */
-            width: 200px; /* Set fixed width for uniform size */
+            height: 250px;
+            width: 200px;
             text-align: center;
             transition: transform 0.3s ease;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin: 0; /* No margin between boxes */
+            margin: 0;
         }
 
         .game:hover {
@@ -127,7 +126,7 @@
 
         .game img {
             width: 100%;
-            height: 150px; /* Adjust image height for consistency */
+            height: 150px;
             object-fit: cover;
             border-radius: 10px;
             margin-bottom: 10px;
@@ -167,6 +166,23 @@
             background-position: center;
         }
 
+        /* Records Section Styling */
+        .records {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .records h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .record-message {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+        }
     </style>
 </head>
 <body>
@@ -193,6 +209,16 @@
         </div>
     </div>
 
+    <!-- Records Page -->
+    <div class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+        <div class="container">
+            <h1>Records</h1>
+            <div class="record-message">
+                Beat Appel level one in 18.9 seconds on MSG - Speedster
+            </div>
+        </div>
+    </div>
+
     <!-- Games Page -->
     <div class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
@@ -212,4 +238,35 @@
                 <div class="game">
                     <h2>Snow Rider</h2>
                     <a href="https://snowrider3d.net/" target="_blank">
-                        <img src
+                        <img src="https://snowrider3d.net/wp-content/uploads/2024/10/snow-rider-3d-m200x200.webp" alt="Snow Rider">
+                    </a>
+                </div>
+
+                <!-- Add more games here as needed -->
+            </div>
+
+            <!-- Back to Home Button Below Games -->
+            <div class="back-to-home">
+                <a href="#" class="button" onclick="goBack()">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to show and hide pages dynamically
+        function showPage(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            const selectedPage = document.querySelector(`.${page}`);
+            selectedPage.classList.add('active');
+        }
+
+        // Function to go back to the homepage
+        function goBack() {
+            showPage('homepage');
+        }
+    </script>
+
+</body>
+</html>
+
