@@ -67,17 +67,16 @@
             padding: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             color: #fff;
-            cursor: pointer; /* Make it clickable */
-            text-align: center; /* Center title */
+            cursor: pointer;
+            text-align: center;
         }
 
         /* Button Styling */
         .button-container {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 15px; /* Space between buttons */
-            align-items: center; /* Center buttons horizontally */
-            justify-content: center; /* Vertically center buttons */
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
         }
 
         .button {
@@ -89,7 +88,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s ease;
-            margin: 10px;
         }
 
         .button:hover {
@@ -101,7 +99,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
-            gap: 20px; /* Gap between games */
+            gap: 20px;
             padding: 20px;
         }
 
@@ -115,8 +113,6 @@
             height: 250px;
             text-align: center;
             transition: transform 0.3s ease;
-            overflow: hidden; /* Ensures the image doesn't overflow the container */
-            margin-bottom: 20px; /* Adds space between rows */
         }
 
         .game:hover {
@@ -126,16 +122,14 @@
         .game img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image fills the entire box */
+            object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 10px; /* Adds space between image and text */
+            margin-bottom: 10px;
         }
 
         .game h2 {
             font-size: 1.2rem;
-            margin-top: 10px;
             color: white;
-            text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7);
         }
 
         /* Link Styling */
@@ -143,7 +137,7 @@
             text-decoration: none;
         }
 
-        /* Records Section Styling */
+        /* Record Section Styling */
         .record-container {
             display: flex;
             flex-direction: column;
@@ -151,15 +145,6 @@
             justify-content: center;
             gap: 20px;
             height: 100vh;
-            padding: 20px;
-        }
-
-        .record-container h1 {
-            font-size: 3rem;
-        }
-
-        .record-container p {
-            font-size: 2rem;
         }
 
         /* Hall of Fame & Shoutouts Section Styling */
@@ -185,12 +170,12 @@
     <!-- Homepage Content -->
     <div id="homepage" class="page homepage active" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
         <div class="container">
-            <h1>Ary Sus Gaming</h1> <!-- Title -->
-            <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 ) !</p>
+            <h1>Ary Sus Gaming</h1>
+            <p>Welcome to Ary Sus Gaming, if you want any games on asg ( email 107176, im so dumb to use my school email 💀 )!</p>
             <div class="button-container">
                 <a href="#" class="button" onclick="showPage('halloffame')">Hall of Fame</a>
                 <a href="#" class="button" onclick="showPage('games')">Games</a>
-                <a href="#" class="button" onclick="showPage('records')">Records</a> <!-- Renamed from My Records -->
+                <a href="#" class="button" onclick="showPage('records')">Records</a>
                 <a href="#" class="button" onclick="showPage('shoutouts')">Shoutouts</a>
                 <a href="chat.html" class="button">Chat</a>
             </div>
@@ -239,7 +224,6 @@
                 </div>
             </div>
 
-            <!-- Row 2 -->
             <div class="games-container">
                 <div class="game">
                     <h2>Game 4</h2>
@@ -258,4 +242,29 @@
                 <div class="game">
                     <h2>Game 6</h2>
                     <a href="https://www.example6.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game6.jpg" alt="
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game6.jpg" alt="Game 6">
+                    </a>
+                </div>
+            </div>
+            
+            <a href="#" class="button" onclick="goBack()">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for page switching
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function goBack() {
+            showPage('homepage');
+        }
+    </script>
+
+</body>
+</html>
