@@ -18,7 +18,7 @@
             background-size: cover;
             background-position: center;
             width: 100%;
-            height: 100vh;
+            height: 100%;
             display: none;
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -80,6 +80,7 @@
             justify-content: center;
             gap: 20px;
             padding: 20px;
+            margin-top: 20px;
         }
 
         /* Game Box Styling */
@@ -129,22 +130,42 @@
             text-align: center;
         }
 
-        /* Records Section Styling */
-        .records {
+        /* Hall of Fame Section Styling */
+        .halloffame-container {
             text-align: center;
             padding: 20px;
+            background-size: cover;
+            background-position: center;
         }
 
-        .records h1 {
+        .halloffame-container h1 {
             font-size: 3rem;
             margin-bottom: 20px;
         }
 
-        .record-message {
+        .halloffame-container h2 {
             font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .halloffame-container p {
+            font-size: 1.5rem;
+        }
+
+        /* Shoutouts Section Styling */
+        .shoutouts-container {
+            text-align: center;
+            padding: 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .shoutouts-container h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .shoutouts-container p {
+            font-size: 1.5rem;
         }
     </style>
 </head>
@@ -165,110 +186,19 @@
         </div>
     </div>
 
-    <!-- Records Page -->
-    <div id="records" class="page records" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
-        <div class="container">
-            <h1>Records</h1>
-            <div class="record-message">
-                Beat Appel level one in 18.9 seconds on MSG - Speedster
-            </div>
-        </div>
-    </div>
-
-    <!-- Games Page -->
-    <div id="games" class="page games" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
-        <div class="container">
-            <h1>GAMES</h1>
-            <p>Check out our featured games!</p>
-
-            <!-- Three Rows of Games -->
-            <div class="games-container">
-                <!-- Row 1 -->
-                <div class="game">
-                    <h2>MSG (Click Image)</h2>
-                    <a href="https://msg1.pages.dev" target="_blank">
-                        <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Msg">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Snow Rider</h2>
-                    <a href="https://snowrider3d.net/" target="_blank">
-                        <img src="https://snowrider3d.net/wp-content/uploads/2024/10/snow-rider-3d-m200x200.webp" alt="Snow Rider">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 3</h2>
-                    <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
-                        <img src="https://thehackerboi123.github.io/cwasontgeemes/imgs/RSG.png" alt="Game 3">
-                    </a>
-                </div>
-            </div>
-
-            <div class="games-container">
-                <!-- Row 2 -->
-                <div class="game">
-                    <h2>Game 4</h2>
-                    <a href="https://www.example4.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game4.jpg" alt="Game 4">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 5</h2>
-                    <a href="https://www.example5.com" target="_blank">
-                        <img src="https://placekitten.com/200/200" alt="Game 5">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 6</h2>
-                    <a href="https://www.example6.com" target="_blank">
-                        <img src="https://placekitten.com/200/200" alt="Game 6">
-                    </a>
-                </div>
-            </div>
-
-            <div class="games-container">
-                <!-- Row 3 -->
-                <div class="game">
-                    <h2>Game 7</h2>
-                    <a href="https://www.example7.com" target="_blank">
-                        <img src="https://placekitten.com/200/200" alt="Game 7">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 8</h2>
-                    <a href="https://www.example8.com" target="_blank">
-                        <img src="https://placekitten.com/200/200" alt="Game 8">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 9</h2>
-                    <a href="https://www.example9.com" target="_blank">
-                        <img src="https://placekitten.com/200/200" alt="Game 9">
-                    </a>
-                </div>
-            </div>
-
+    <!-- Hall of Fame Page -->
+    <div id="halloffame" class="page halloffame" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+        <div class="halloffame-container">
+            <h1>Hall of Fame</h1>
+            <h2>Cool People</h2>
+            <p style="font-size: 2rem;">Mally, Boey, Anshinator, Couch, ExoFiex6</p>
+            <p style="font-size: 2rem;">Sub to TheGodlyNoob_YT (Boey) on youtube!</p>
+            <p style="font-size: 2rem;">Suggest me games on my outlook if you want to be in the Hall of Fame ;) </p>
             <a href="#" class="button back-to-home" onclick="goBack()">Back to Home</a>
         </div>
     </div>
 
-    <script>
-        function showPage(page) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active'));
-            document.getElementById(page).classList.add('active');
-        }
-
-        function goBack() {
-            showPage('homepage');
-        }
-    </script>
-
-</body>
-</html>
+    <!-- Shoutouts Page -->
+    <div id="shoutouts" class="page shoutouts" style="background-image: url('https://tse1.mm.bing.net/th/id/OIP.P4uHTjYp49uv3EAxA522IAHaEK?rs=1&pid=ImgDetMain');">
+        <div class="shoutouts-container">
+            <h
