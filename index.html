@@ -97,10 +97,9 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 0; /* No gap between boxes */
+            gap: 20px;
             padding: 20px;
             text-align: center;
-            width: 100%;
         }
 
         /* Game Box Styling */
@@ -117,7 +116,6 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            margin: 0;
         }
 
         .game:hover {
@@ -144,26 +142,11 @@
             text-decoration: none;
         }
 
-        /* Hall of Fame & Shoutouts Section Styling */
-        .halloffame-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
         /* Back to Home Button Below Games */
         .back-to-home {
             display: block;
             margin-top: 20px;
             text-align: center;
-        }
-
-        /* Ensure background stretches based on content */
-        .page {
-            background-size: 100% 100%;
-            background-position: center;
         }
 
         /* Records Section Styling */
@@ -242,7 +225,53 @@
                     </a>
                 </div>
 
-                <!-- Add more games here as needed -->
+                <!-- Game 3: Link to Game -->
+                <div class="game">
+                    <h2>Game 3 (Not Added Yet)</h2>
+                    <a href="https://thehackerboi123.github.io/cwasontgeemes/" target="_blank">
+                        <img src="https://thehackerboi123.github.io/cwasontgeemes/imgs/RSG.png" alt="Game 3">
+                    </a>
+                </div>
+
+                <!-- Game 4: Link to Game -->
+                <div class="game">
+                    <h2>Game 4 (Not Added Yet)</h2>
+                    <a href="https://www.example4.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game4.jpg" alt="Game 4">
+                    </a>
+                </div>
+
+                <!-- Game 5: Example Game -->
+                <div class="game">
+                    <h2>Game 5 (Not Added Yet)</h2>
+                    <a href="https://www.example5.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.example.jpg" alt="Game 5">
+                    </a>
+                </div>
+
+                <!-- Game 6: Example Game -->
+                <div class="game">
+                    <h2>Game 6 (Not Added Yet)</h2>
+                    <a href="https://www.example6.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.example2.jpg" alt="Game 6">
+                    </a>
+                </div>
+
+                <!-- Game 7: Example Game -->
+                <div class="game">
+                    <h2>Game 7 (Not Added Yet)</h2>
+                    <a href="https://www.example7.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.example3.jpg" alt="Game 7">
+                    </a>
+                </div>
+
+                <!-- Game 8: Example Game -->
+                <div class="game">
+                    <h2>Game 8 (Not Added Yet)</h2>
+                    <a href="https://www.example8.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.example4.jpg" alt="Game 8">
+                    </a>
+                </div>
             </div>
 
             <!-- Back to Home Button Below Games -->
@@ -255,18 +284,4 @@
     <script>
         // JavaScript to show and hide pages dynamically
         function showPage(page) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
-            const selectedPage = document.querySelector(`.${page}`);
-            selectedPage.classList.add('active');
-        }
-
-        // Function to go back to the homepage
-        function goBack() {
-            showPage('homepage');
-        }
-    </script>
-
-</body>
-</html>
-
+            const pages = document.querySelector
