@@ -200,27 +200,33 @@
                 <!-- Game 1: MSG -->
                 <div class="game">
                     <h2>MSG (Click Image)</h2>
-                    <iframe src="https://msg1.pages.dev" width="100%" height="250px" style="border-radius: 10px;"></iframe>
+                    <a href="https://msg1.pages.dev" target="_blank">
                         <img src="https://msg1.pages.dev/IMGS/MSG.png" alt="Msg">
                     </a>
                 </div>
 
-                <!-- Game 2: Embed Game via iframe -->
+                <!-- Game 2: Link to Game -->
                 <div class="game">
-                    <h2>Game 2</h2>
-                    <iframe src="https://www.example2.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
+                    <h2>Game 2 (Not Added Yet)</h2>
+                    <a href="https://www.example2.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game2.jpg" alt="Game 2">
+                    </a>
                 </div>
 
-                <!-- Game 3: Embed Game via iframe -->
+                <!-- Game 3: Link to Game -->
                 <div class="game">
-                    <h2>Game 3</h2>
-                    <iframe src="https://www.example3.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
+                    <h2>Game 3 (Not Added Yet)</h2>
+                    <a href="https://www.example3.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game3.jpg" alt="Game 3">
+                    </a>
                 </div>
 
-                <!-- Game 4: Embed Game via iframe -->
+                <!-- Game 4: Link to Game -->
                 <div class="game">
-                    <h2>Game 4</h2>
-                    <iframe src="https://www.example4.com" width="100%" height="250px" style="border-radius: 10px;"></iframe>
+                    <h2>Game 4 (Not Added Yet)</h2>
+                    <a href="https://www.example4.com" target="_blank">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game4.jpg" alt="Game 4">
+                    </a>
                 </div>
             </div>
 
@@ -230,28 +236,23 @@
 
     <script>
         function showPage(page) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
-
-            // Show the selected page
             const selectedPage = document.querySelector(`.${page}`);
             selectedPage.classList.add('active');
         }
 
-        // Back button function
         function goBack() {
             showPage('homepage');
         }
 
-        // Add the visitor count functionality
+        // Visitor count functionality
         let allTimeCount = localStorage.getItem('allTimeCount') || 0;
         let weeklyCount = localStorage.getItem('weeklyCount') || 0;
 
         document.getElementById('allTimeCount').textContent = allTimeCount;
         document.getElementById('weeklyCount').textContent = weeklyCount;
 
-        // Increment counts on page load
         allTimeCount++;
         weeklyCount++;
 
