@@ -149,6 +149,7 @@
             justify-content: center;
             gap: 20px;
             height: 100vh;
+            padding-bottom: 50px; /* Ensure the button is at the bottom */
         }
 
         /* Hall of Fame & Shoutouts Section Styling */
@@ -158,6 +159,16 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
+            padding-bottom: 50px; /* Ensure the button is at the bottom */
+        }
+
+        /* Shoutouts Background */
+        .shoutouts-container {
+            background-image: url('https://tse2.mm.bing.net/th?id=OIP.P05X2PVLtI5Gbl0fTd_GAgHaEK&pid=Api&P=0&h=220');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
         }
 
     </style>
@@ -240,56 +251,4 @@
                 <div class="game">
                     <h2>Game 5</h2>
                     <a href="https://www.example5.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game5.jpg" alt="Game 5">
-                    </a>
-                </div>
-
-                <div class="game">
-                    <h2>Game 6</h2>
-                    <a href="https://www.example6.com" target="_blank">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game6.jpg" alt="Game 6">
-                    </a>
-                </div>
-            </div>
-            
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Records Page -->
-    <div id="records" class="page records">
-        <div class="record-container">
-            <h1>Records</h1>
-            <p style="font-size: 2rem;">Here you can see the records!</p>
-            <p style="font-size: 1.5rem;">Top Scores: 1000 points, 900 points, 850 points.</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <!-- Shoutouts Page -->
-    <div id="shoutouts" class="page shoutouts">
-        <div class="shoutouts-container">
-            <h1>Shoutouts</h1>
-            <p style="font-size: 2rem;">Big shoutout to:</p>
-            <p style="font-size: 1.5rem;">Mally, Boey, Anshinator, and everyone who supported!</p>
-            <a href="#" class="button" onclick="goBack()">Back to Home</a>
-        </div>
-    </div>
-
-    <script>
-        // JavaScript for page switching
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-
-        function goBack() {
-            showPage('homepage');
-        }
-    </script>
-
-</body>
-</html>
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.pWfP9NtjoZ_7WtCdTvJ10wHaH_?rs=1&pid=ImgDetMain/game5.jpg" alt="Game 
