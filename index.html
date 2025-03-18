@@ -94,13 +94,14 @@
             background-color: #666666;
         }
 
-        /* Games Container Styling */
+        /* Games Container Styling with spacing between rows */
         .games-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             gap: 20px;
             padding: 20px;
+            margin-bottom: 40px; /* Adds space between rows */
         }
 
         /* Game Box Styling */
@@ -113,6 +114,9 @@
             height: 250px;
             text-align: center;
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .game:hover {
@@ -132,9 +136,9 @@
             color: white;
         }
 
-        /* Link Styling */
-        .game a {
-            text-decoration: none;
+        /* Back to Home Button Spacing */
+        .button-container a:last-child {
+            margin-top: 40px; /* Adds space between games and the button */
         }
 
         /* Record Section Styling */
@@ -225,6 +229,7 @@
             </div>
 
             <div class="games-container">
+                <!-- Row 2 -->
                 <div class="game">
                     <h2>Game 4</h2>
                     <a href="https://www.example4.com" target="_blank">
